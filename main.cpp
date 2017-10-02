@@ -4,6 +4,7 @@
 using namespace std;
 
 void set_sim_time();
+void set_current();
 
 double SIM_TIME;
 double Iext;
@@ -19,13 +20,17 @@ int main()
 
 	Neuron n1;
 	set_sim_time();
+	set_current();
+	
+	cout << "settings are : " << Iext << " " << TIME_STEP << endl;
 	
 	do{
-		n1.update(Iext,TIME_STEP);
+		n1.Neuron::update(Iext,TIME_STEP);
 		time+=TIME_STEP;
 	}
 	while(time<= SIM_TIME);
 
+	cout << time << endl;
 	return 0;	
 }
 
