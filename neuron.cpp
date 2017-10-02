@@ -28,21 +28,23 @@ void Neuron::update(double Iext, double TimeStep)
 		fire();
 	}
 	
-	printMembPot();
 }
 
 void Neuron::resetMembPot()
 {
-	MembPot=0;
+	MembPot=Vres;
 }
 
+//the neuron fires an action potentian and the resets
 void Neuron::fire()
 {
 	resetMembPot();
 	SpikeNumb+=1;
+	cout << "a neuron has fired" << endl;
 }
 
 void Neuron::printMembPot()
 {
 	cout << MembPot;
 }
+
