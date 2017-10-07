@@ -9,16 +9,22 @@ using namespace std;
 class Neuron{
 	
 	private:
-//should the resistance capaciy and other variable be static, here all cells share the same but thez could be different
+//should the resistance capaciy and other variable be static, here all cells share the same but they could be different
 
 		
-	//counting created neurons
+
+	//counting created neurons 
 		static int cellCount;
+
+
 		
 	//personal variables which change with time
 		double MembPot;
 		double SpikeNumb;;
-		//vector<double> SpikeHistory;
+		vector<double> SpikeHistory;
+		
+		
+	//personal variables which stay constant once intialised, think yhich ones are static double or const doubles
 		
 		
 	//personal variables which stay constant once intialised
@@ -26,10 +32,11 @@ class Neuron{
 		double Res; //resistance
 		double Cap; //capacity
 		double Tau;
-		double TauRef; // refractory perdio
+
+		double TauRef; // refractory perdiod
 		double Vres; //membrane potential after spike
 		double SpikeThreshold; //potential to trigger neuron spike
-		
+
 
 //use a separate file for constants ?
 
@@ -43,25 +50,29 @@ class Neuron{
 			cout << "a neuron is born" << endl;
 			cellCount++;
 		}
+
 	//getters 
 		double getMembPot() const;
 		double getSpikeNumb() const ;
 		vector<double>& getSpikeHistory() const ;
+		double getTauRef() const;
+		double getLastSpike();
+
 		
 	//setters
 		void setMembPot();
 
 	//cell dev methods
-		void update(double Iext, double TimeStep);
+		void update(double TimeStep, double time, double Iext=0);
 		void resetMembPot();
-		void fire();
+		void fire(double time);
+
 	
 	//printing methods
-		void printMembPot();
 		
+	//storing history in main to have time component
+		//void storeMembPot();
 		
-
 
 };
 
-#endif

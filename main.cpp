@@ -1,6 +1,9 @@
 #include "neuron.hpp"
 #include <iostream>
 
+#include <fstream>
+
+
 using namespace std;
 
 void set_sim_time();
@@ -19,14 +22,26 @@ int main()
 	double TIME_STEP(0.1); //decide if global or where it should go
 
 	Neuron n1;
+  
+	ofstream history;
+	history.open("history.txt");
 	set_sim_time();
 	set_current();
 	
 	cout << "settings are : " << Iext << " " << TIME_STEP << endl;
 	
 	do{
-		n1.Neuron::update(Iext,TIME_STEP);
+
+		if(time >a and time< b)
+		{
+			n1.Neuron::update(TIME_STEP, time, Iext);
+		} else {
+			n1.Neuron::update(TIME_STEP, time);
+		}
 		time+=TIME_STEP;
+		//check if external current applied or not to call update
+		history << n1.getMembPot() << " " ;
+		
 	}
 	while(time<= SIM_TIME);
 
