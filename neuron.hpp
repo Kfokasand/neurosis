@@ -28,8 +28,8 @@ class Neuron{
 		
 	//personal variables which stay constant once intialised
 		
-		double Res; //resistance
 		double Cap; //capacity
+		double Res; //resistance
 		double Tau;
 
 		double TauRef; // refractory perdiod
@@ -42,8 +42,8 @@ class Neuron{
 
 
 	//constructor provided with default values
-		Neuron(double iMembPot=0, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20)
-		:MembPot(iMembPot), SpikeNumb(iSpikeNumb), Tau(t), TauRef(tref), Vres(reset), SpikeThreshold(spiket)
+		Neuron(double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20)
+		:Cap(reset), MembPot(iMembPot), SpikeNumb(iSpikeNumb), Tau(t), TauRef(tref), Vres(reset), SpikeThreshold(spiket)
 		{
 			cout << "a neuron is born" << endl;
 			cellCount++;
