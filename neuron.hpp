@@ -10,12 +10,10 @@ class Neuron{
 	
 	private:
 //should the resistance capaciy and other variable be static, here all cells share the same but they could be different
-
 		
 
 	//counting created neurons 
 		static int cellCount;
-
 
 		
 	//personal variables which change with time
@@ -49,6 +47,7 @@ class Neuron{
 		{
 			cout << "a neuron is born" << endl;
 			cellCount++;
+			cout << "initial membrane potential is : " << MembPot << endl;
 		}
 
 	//getters 

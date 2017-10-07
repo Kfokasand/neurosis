@@ -22,9 +22,11 @@ double Neuron::getSpikeNumb() const
 
 void Neuron::update(double TimeStep, double time, double Iext)
 {
-	if(!SpikeHistory.empty() and time<getLastSpike()+TauRef) //checking the refractory perdiod has passed since last spike
+	if(!SpikeHistory.empty() and time>=getLastSpike()+TauRef) //checking the refractory period has passed since last spike
 	{
-		MembPot= MembPot*exp(-Tau/TimeStep)+Iext*Cap*Tau*(1-exp(-Tau/TimeStep));
+		//MembPot= (MembPot*exp(-TimeStep/Tau))+(Iext*(Tau/Cap)*(1-exp(-TimeStep/Tau)));
+		MembPot*=1.5;
+		MembPot+=Iext;
 		
 		if(MembPot>SpikeThreshold) // if the membrane potential crosses the threshold an action potential is fired
 		{
@@ -33,17 +35,20 @@ void Neuron::update(double TimeStep, double time, double Iext)
 	} 
 	else if (SpikeHistory.empty())
 	{
-			MembPot= MembPot*exp(-Tau/TimeStep)+Iext*Cap*Tau*(1-exp(-Tau/TimeStep));
+			//MembPot= (MembPot*exp(-TimeStep/Tau))+(Iext*(Tau/Cap)*(1-exp(-TimeStep/Tau)));
+			MembPot*=1.5;
+			MembPot+=Iext;
 		
 		if(MembPot>SpikeThreshold) // if the membrane potential crosses the threshold an action potential is fired
 		{
 			fire(time);
 		}
 	}
-	else if (!SpikeHistory.empty() and time>=getLastSpike()+TauRef)
+	else if (!SpikeHistory.empty() and time<=getLastSpike()+TauRef)
 	{ //if the neuron is still in its refractory period the membrane potential stays at reset value
 		
 		resetMembPot();
+		cout << "a neuron is frozen" << endl;
 	}
 	
 }
