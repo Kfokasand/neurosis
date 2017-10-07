@@ -22,12 +22,12 @@ double Neuron::getSpikeNumb() const
 
 void Neuron::update(double TimeStep, double time, double Iext)
 {
+	double EXP1 (exp(-TimeStep/Tau));
+	cout << "EXP1 is : " << EXP1;
 	if(!SpikeHistory.empty() and time>=getLastSpike()+TauRef) //checking the refractory period has passed since last spike
 	{
-		//MembPot= (MembPot*exp(-TimeStep/Tau))+(Iext*(Tau/Cap)*(1-exp(-TimeStep/Tau)));
-		MembPot*=1.5;
-		MembPot+=Iext;
-		
+		MembPot= MembPot*EXP1+Iext*Res*(1-EXP1);
+
 		if(MembPot>SpikeThreshold) // if the membrane potential crosses the threshold an action potential is fired
 		{
 			fire(time);
@@ -35,9 +35,7 @@ void Neuron::update(double TimeStep, double time, double Iext)
 	} 
 	else if (SpikeHistory.empty())
 	{
-			//MembPot= (MembPot*exp(-TimeStep/Tau))+(Iext*(Tau/Cap)*(1-exp(-TimeStep/Tau)));
-			MembPot*=1.5;
-			MembPot+=Iext;
+		MembPot= MembPot*EXP1+Iext*Res*(1-EXP1);
 		
 		if(MembPot>SpikeThreshold) // if the membrane potential crosses the threshold an action potential is fired
 		{

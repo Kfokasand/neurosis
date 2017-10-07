@@ -2,6 +2,7 @@
 #define NEURON_H
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -35,7 +36,6 @@ class Neuron{
 		double Vres; //membrane potential after spike
 		double SpikeThreshold; //potential to trigger neuron spike
 
-
 //use a separate file for constants ?
 
 	public:
@@ -48,6 +48,7 @@ class Neuron{
 			cout << "a neuron is born" << endl;
 			cellCount++;
 			cout << "initial membrane potential is : " << MembPot << endl;
+			Res=Tau/Cap; //stays constant at this may change later
 		}
 
 	//getters 
