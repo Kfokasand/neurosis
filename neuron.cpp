@@ -64,15 +64,8 @@ void Neuron::fire(double time)
 }
 
 
-
 double Neuron::getLastSpike()
 {
 	return SpikeHistory[SpikeHistory.size()-1];
 }
 
-}
-
-void Neuron::printMembPot()
-{
-	cout << MembPot;
-}
