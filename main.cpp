@@ -1,6 +1,8 @@
 #include "neuron.hpp"
 #include <iostream>
+
 #include <fstream>
+
 
 using namespace std;
 
@@ -20,15 +22,16 @@ int main()
 	double TIME_STEP(0.1); //decide if global or where it should go
 
 	Neuron n1;
+  
 	ofstream history;
 	history.open("history.txt");
-	
 	set_sim_time();
 	set_current();
 	
 	cout << "settings are : " << Iext << " " << TIME_STEP << endl;
 	
 	do{
+
 		if(time >a and time< b)
 		{
 			n1.Neuron::update(TIME_STEP, time, Iext);

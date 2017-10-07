@@ -1,5 +1,6 @@
 #include "neuron.hpp"
 
+#include <cmath>
 
 double Neuron::getMembPot() const
 {
@@ -54,6 +55,7 @@ void Neuron::resetMembPot()
 
 //the neuron fires an action potentian and the resets
 void Neuron::fire(double time)
+
 {
 	resetMembPot();
 	SpikeNumb+=1;
@@ -66,4 +68,11 @@ void Neuron::fire(double time)
 double Neuron::getLastSpike()
 {
 	return SpikeHistory[SpikeHistory.size()-1];
+}
+
+}
+
+void Neuron::printMembPot()
+{
+	cout << MembPot;
 }
