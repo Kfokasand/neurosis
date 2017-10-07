@@ -14,7 +14,7 @@ double Iext;
 double a;
 double b;
 
-int Neuron::cellCount=0;
+int Neuron::cellCount=3;
 
 int main()
 {
