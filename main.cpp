@@ -46,6 +46,7 @@ int main()
 	while(time<= SIM_TIME);
 
 	cout << time << endl;
+	cout << "The neuron fired " << n1.getSpikeNumb() << " times. "<<endl;
 	return 0;	
 }
 
