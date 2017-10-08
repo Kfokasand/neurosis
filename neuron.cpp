@@ -1,5 +1,4 @@
 #include "neuron.hpp"
-
 #include <cmath>
 
 double Neuron::getMembPot() const
@@ -15,10 +14,6 @@ double Neuron::getSpikeNumb() const
 	return SpikeNumb;
 }
 
-/*vector<double>& Neuron::getSpikeHistory() const 
-{
-	return SpikeHistory;
-}*/
 
 void Neuron::update(double TimeStep, double time, double Iext)
 {
@@ -49,9 +44,8 @@ void Neuron::resetMembPot()
 	MembPot=Vres;
 }
 
-//the neuron fires an action potentian and then resets
-void Neuron::fire(double time)
 
+void Neuron::fire(double time)
 {
 	//incrementing number of spikes of particular neuron
 	SpikeNumb+=1;
@@ -63,7 +57,7 @@ void Neuron::fire(double time)
 
 }
 
-//returns the time value of the last spike in history
+
 double Neuron::getLastSpike()
 {
 	return SpikeHistory[SpikeHistory.size()-1];
