@@ -23,14 +23,12 @@ class Neuron{
 		vector<double> SpikeHistory;
 		
 		
-	//personal variables which stay constant once intialised, think yhich ones are static double or const doubles
-		
-		
-	//personal variables which stay constant once intialised
-		
+	//personal variables which may change with time
 		double Cap; //capacity
 		double Res; //resistance
-		double Tau;
+		double Tau; //I'm not sure
+		
+	//personal variables which stay constant once intialised
 
 		double TauRef; // refractory perdiod
 		double Vres; //membrane potential after spike
@@ -42,12 +40,15 @@ class Neuron{
 
 	//constructor provided with default values
 		Neuron(double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20)
-		:Cap(reset), MembPot(iMembPot), SpikeNumb(iSpikeNumb), Tau(t), TauRef(tref), Vres(reset), SpikeThreshold(spiket)
+		:MembPot(iMembPot), SpikeNumb(iSpikeNumb), 
+		 Cap(reset), Tau(t),
+		 TauRef(tref), Vres(reset), SpikeThreshold(spiket)
 		{
 			cout << "a neuron is born" << endl;
+			//incrementing number of neurons
 			cellCount++;
 			cout << "initial membrane potential is : " << MembPot << endl;
-			Res=Tau/Cap; //stays constant at this may change later
+			Res=Tau/Cap;
 		}
 
 	//getters 

@@ -21,27 +21,38 @@ int main()
 	double time(0);
 	double TIME_STEP(0.1); //decide if global or where it should go
 
+	//creating neuron for simulation
 	Neuron n1;
   
+	//opening channel to store membrane potentials
 	ofstream history;
 	history.open("history.txt");
+	
+	//setting simulation values
+	//time
 	set_sim_time();
+	//external current applied
 	set_current();
 	
 	cout << "settings are : " << Iext << " " << TIME_STEP << endl;
 	
+	//updating cell
 	do{
-
+		//when an external current is applied
 		if(time >a and time< b)
 		{
 			n1.Neuron::update(TIME_STEP, time, Iext);
-		} else {
+		} 
+		//when no external current is applied
+		else {
 			n1.Neuron::update(TIME_STEP, time);
 		}
-		time+=TIME_STEP;
-		//check if external current applied or not to call update
-		history << n1.getMembPot() << " " ;
 		
+		//storing membrane potential value in.txt file
+		history << n1.getMembPot() << " " ;	
+		
+		//incremeting simulation time
+		time+=TIME_STEP;
 	}
 	while(time<= SIM_TIME);
 
