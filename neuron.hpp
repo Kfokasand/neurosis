@@ -11,10 +11,6 @@ class Neuron{
 	
 	private:
 //should the resistance capaciy and other variable be static, here all cells share the same but they could be different
-		
-
-	//counting created neurons 
-		static int cellCount;
 
 		
 	//personal variables which change with time
@@ -39,17 +35,7 @@ class Neuron{
 
 
 	//constructor provided with default values
-		Neuron(double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20)
-		:MembPot(iMembPot), SpikeNumb(iSpikeNumb), 
-		 Cap(reset), Tau(t),
-		 TauRef(tref), Vres(reset), SpikeThreshold(spiket)
-		{
-			cout << "a neuron is born" << endl;
-			//incrementing number of neurons
-			cellCount++;
-			cout << "initial membrane potential is : " << MembPot << endl;
-			Res=Tau/Cap;
-		}
+		Neuron(double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20);
 
 	//getters 
 		double getMembPot() const;

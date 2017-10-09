@@ -1,6 +1,19 @@
 #include "neuron.hpp"
 #include <cmath>
 
+
+Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double reset, double spiket)
+		:MembPot(iMembPot), SpikeNumb(iSpikeNumb), 
+		 Cap(reset), Tau(t),
+		 TauRef(tref), Vres(reset), SpikeThreshold(spiket)
+		{
+			cout << "a neuron is born" << endl;
+			cout << "initial membrane potential is : " << MembPot << endl;
+			SpikeNumb=0;
+			cout << "initial number of spikes is : " << SpikeNumb << endl;
+			Res=Tau/Cap;
+		}
+		
 double Neuron::getMembPot() const
 {
 	return MembPot;
@@ -15,7 +28,7 @@ double Neuron::getSpikeNumb() const
 }
 
 
-void Neuron::update(double TimeStep, double time, double Iext)
+void Neuron::update(double TimeStep, double time, double Iext)// time has been converted to appropriate double in calling of method
 {
 	double EXP1 (exp(-TimeStep/Tau));
 	
