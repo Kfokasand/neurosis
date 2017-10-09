@@ -63,10 +63,19 @@ int main()
 
 void set_sim_time()
 {
- //check the imput
-	cout << "Set simulation time in ms : ";
-	cin>> SIM_TIME;
+
+	//check the imput
+	do {
+		cout << endl << "Set simulation time in ms : ";
+		cin>> SIM_TIME;	
+	} while(SIM_TIME<0);
 	
+	/*if (!cin) // same as cin.fail() checking value type
+	{
+		cin.clear();
+		cin.ignore(1000);
+		cout << "Invalid value type, please enter value again : " ;
+	}*/
 }
 
 void set_current()
