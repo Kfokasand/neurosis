@@ -6,6 +6,12 @@
 
 using namespace std;
 
+struct rel
+{
+	Neuron* n;
+	double quality_coeff;
+	
+};
 
 class Neuron{
 	
@@ -17,6 +23,10 @@ class Neuron{
 		double MembPot;
 		double SpikeNumb;;
 		vector<double> SpikeHistory;
+		//implement delay in current reception
+		vector<double> buffer_;
+		//internal cell clock
+		int cell_time;
 		
 		
 	//personal variables which may change with time
@@ -29,7 +39,8 @@ class Neuron{
 		double TauRef; // refractory perdiod
 		double Vres; //membrane potential after spike
 		double SpikeThreshold; //potential to trigger neuron spike
-
+		vector<rel> neighbors;
+		int delay_;
 
 	public:
 
@@ -56,6 +67,10 @@ class Neuron{
 		void resetMembPot();
 		//the neuron fires an action potentian and then resets
 		void fire(double time);
+		//recieve voltage from another neuron
+		void recieve(double charge, int time); //use general time since both cells wright in time_%D index of vector 
+		//send spike to all neighbors
+		void send(double charge);
 
 		
 	//storing history in main to have time component
@@ -63,5 +78,7 @@ class Neuron{
 		
 
 };
+
+
 
 #endif

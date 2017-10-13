@@ -12,6 +12,11 @@ Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double
 			SpikeNumb=0;
 			cout << "initial number of spikes is : " << SpikeNumb << endl;
 			Res=Tau/Cap;
+			cell_time=0;
+			delay_=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
+			//initialising buffer with all 0 values
+			buffer_=(vector<double> (delay_,0));
+
 		}
 		
 double Neuron::getMembPot() const
@@ -74,5 +79,15 @@ void Neuron::fire(double time)
 double Neuron::getLastSpike()
 {
 	return SpikeHistory[SpikeHistory.size()-1];
+}
+
+void Neuron::recieve(double charge, int time)
+{
+	buffer_[time%delay_]=charge;
+}
+
+void Neuron::send(double charge)
+{
+	//go through all neighbors and call their recieve function
 }
 
