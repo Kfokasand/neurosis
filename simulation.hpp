@@ -37,7 +37,7 @@ class Simulation{
 	void new_neuron();
 	//chosen as a bool to ensure all neurons have been succesfully updated at each step (test may be done with a catch and throw or asset
 	bool neurons_update(ofstream& out);
-
+	void network();
 
 
 };

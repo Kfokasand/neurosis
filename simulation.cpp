@@ -44,12 +44,13 @@ void Simulation::new_neuron()
 	Neuron* n1 = new Neuron ();
 	cells_.push_back(*n1); // creating a dynamic neuron avoid copies
 	// for now all cells are neigbors
-	n1->add_neighbors(cells_);
 }
 
 void Simulation::run()
 {
 	new_neuron();
+	new_neuron();
+	network();
 	//opening channel to store membrane potentials
 	ofstream history;
 	history.open("history.txt");	
@@ -92,4 +93,10 @@ bool Simulation::neurons_update(ofstream& out)
 
 	
 	return true;
+}
+
+void Simulation::network()
+{
+	for(auto cell:cells_)
+	{	cell.add_neighbors(cells_); }
 }
