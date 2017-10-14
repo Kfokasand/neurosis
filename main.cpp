@@ -12,7 +12,6 @@ int main()
 	sim1.run();
 	
 	
-	
 	return 0;	
 }
 

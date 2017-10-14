@@ -12,6 +12,7 @@ Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double
 			SpikeNumb=0;
 			cout << "initial number of spikes is : " << SpikeNumb << endl;
 			Res=Tau/Cap;
+			//initialising cells own clock
 			cell_time=0;
 			delay_=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
 			//initialising buffer with all 0 values
@@ -55,6 +56,8 @@ void Neuron::update(double TimeStep, double time, double Iext)// time has been c
 		resetMembPot();
 	}
 	
+	//incrementing cell's clock
+	cell_time+=1;
 }
 
 void Neuron::resetMembPot()
@@ -69,12 +72,14 @@ void Neuron::fire(double time)
 	SpikeNumb+=1;
 	//storing the time of the action potential
 	SpikeHistory.push_back(time);
+	
+	//sending voltage to all neighbor cells
+	send(MembPot);
 	//reseting membrane potential
 	resetMembPot();
 	cout << "a neuron has fired" << endl;
 
 }
-
 
 double Neuron::getLastSpike()
 {
@@ -88,6 +93,16 @@ void Neuron::recieve(double charge, int time)
 
 void Neuron::send(double charge)
 {
-	//go through all neighbors and call their recieve function
+	//go through all neighbors and call their recieve function with the right coeff
+	
+}
+
+void Neuron::add_neighbors(const vector<Neuron>& cells)
+{
+	for(auto cell: cells)
+	{
+		rel* blip = new rel {&cell,1.0};
+		neighbors_.push_back(*blip);
+	}
 }
 

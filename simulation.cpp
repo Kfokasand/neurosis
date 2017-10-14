@@ -41,8 +41,10 @@ void Simulation::set_current()
 
 void Simulation::new_neuron()
 {
-	Neuron n1;
-	cells_.push_back(n1);
+	Neuron* n1 = new Neuron ();
+	cells_.push_back(*n1); // creating a dynamic neuron avoid copies
+	// for now all cells are neigbors
+	n1->add_neighbors(cells_);
 }
 
 void Simulation::run()
@@ -66,6 +68,8 @@ void Simulation::run()
 	cout << "The neuron has fired " << cells_[0].Neuron::getSpikeNumb() << " times" <<endl;
 	
 }
+
+
 
 bool Simulation::neurons_update(ofstream& out)
 {

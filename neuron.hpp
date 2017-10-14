@@ -3,15 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include "relation.hpp"
 
 using namespace std;
 
-struct rel
-{
-	Neuron* n;
-	double quality_coeff;
-	
-};
 
 class Neuron{
 	
@@ -39,7 +34,7 @@ class Neuron{
 		double TauRef; // refractory perdiod
 		double Vres; //membrane potential after spike
 		double SpikeThreshold; //potential to trigger neuron spike
-		vector<rel> neighbors;
+		vector<rel> neighbors_; 
 		int delay_;
 
 	public:
@@ -71,10 +66,10 @@ class Neuron{
 		void recieve(double charge, int time); //use general time since both cells wright in time_%D index of vector 
 		//send spike to all neighbors
 		void send(double charge);
+		//add tab of cells into tab of neighbors
+		void add_neighbors(const vector<Neuron>& cells);
 
 		
-	//storing history in main to have time component
-		//void storeMembPot();
 		
 
 };
