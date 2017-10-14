@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -23,6 +25,7 @@ class Neuron{
 		double Cap; //capacity
 		double Res; //resistance
 		double Tau; //I'm not sure
+		ofstream history;
 		
 	//personal variables which stay constant once intialised
 
@@ -35,7 +38,12 @@ class Neuron{
 
 
 	//constructor provided with default values
-		Neuron(double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20);
+		Neuron(string name, double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20);
+	//copy constuctor to handle flow
+		Neuron(const Neuron& other);
+		
+	//destructor meant to close flow to hsitory file
+		~Neuron();
 
 	//getters 
 		double getMembPot() const;
@@ -51,11 +59,14 @@ class Neuron{
 	//cell dev methods
 	
 		//changes value of membrane potential according to time laps, external current or spikes
-		void update(double TimeStep, double time, double Iext=0);
+		//returns true if the cell fires
+		bool update(double TimeStep, double time, double Iext=0);
 		//resets membrane potential to rest value
 		void resetMembPot();
 		//the neuron fires an action potentian and then resets
 		void fire(double time);
+		//the neuron received an action potential
+		void receive();
 
 		
 	//storing history in main to have time component

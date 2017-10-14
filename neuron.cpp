@@ -2,7 +2,7 @@
 #include <cmath>
 
 
-Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double reset, double spiket)
+Neuron::Neuron(string name, double iMembPot, double iSpikeNumb, double t, double tref, double reset, double spiket)
 		:MembPot(iMembPot), SpikeNumb(iSpikeNumb), 
 		 Cap(reset), Tau(t),
 		 TauRef(tref), Vres(reset), SpikeThreshold(spiket)
@@ -12,7 +12,22 @@ Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double
 			SpikeNumb=0;
 			cout << "initial number of spikes is : " << SpikeNumb << endl;
 			Res=Tau/Cap;
+			
+
+			//opening channel to store membrane potentials
+			history.open("history" + name +".txt");
+			cout << "channel history " +name + " has been opened" << endl;
 		}
+
+Neuron::Neuron(const Neuron& other)
+		:
+{
+	//handle flow transfer
+	
+}
+		
+Neuron::~Neuron()
+		{history.close();}
 		
 double Neuron::getMembPot() const
 {
@@ -28,7 +43,7 @@ double Neuron::getSpikeNumb() const
 }
 
 
-void Neuron::update(double TimeStep, double time, double Iext)// time has been converted to appropriate double in calling of method
+bool Neuron::update(double TimeStep, double time, double Iext)// time has been converted to appropriate double in calling of method
 {
 	double EXP1 (exp(-TimeStep/Tau));
 	
@@ -42,6 +57,8 @@ void Neuron::update(double TimeStep, double time, double Iext)// time has been c
 		{
 			fire(time);
 		}
+		
+		return false;
 	} 
 	
 	//if the neuron is still in its refractory period the membrane potential stays at reset value
@@ -50,6 +67,10 @@ void Neuron::update(double TimeStep, double time, double Iext)// time has been c
 		resetMembPot();
 	}
 	
+			
+	//storing membrane potential value in.txt file
+	history << MembPot << " " ;
+	return false;
 }
 
 void Neuron::resetMembPot()
