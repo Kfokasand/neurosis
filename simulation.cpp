@@ -1,5 +1,5 @@
 #include "simulation.hpp"
-#include <fstream>
+
 
 Simulation::Simulation(double timestep, int time)
 			:time_step(timestep), time_(time)
@@ -47,9 +47,9 @@ void Simulation::set_current()
 	cin>>bbound;
 }
 
-void Simulation::new_neuron()
+void Simulation::new_neuron(string name)
 {
-	Neuron* n1 = new Neuron ();
+	Neuron* n1 = new Neuron (name);
 	/*'doesn't like it, copies are created!! how to avoid it ?'*/
 	cells_.push_back(n1); // creating a dynamic neuron avoid copies
 	// for now all cells are neigbors
@@ -57,8 +57,9 @@ void Simulation::new_neuron()
 
 void Simulation::run()
 {
-	new_neuron();
-	new_neuron();
+	new_neuron("n1");
+	new_neuron("n2");
+	cells_[1]->setMembPot(0);
 	network();
 	//opening channel to store membrane potentials
 	ofstream history;
@@ -66,7 +67,7 @@ void Simulation::run()
 	
 	//updating cell
 	do{
-		neurons_update(history);
+		neurons_update();
 		
 		//incremeting simulation time_
 		time_+=1;
@@ -75,29 +76,28 @@ void Simulation::run()
 
 	cout << time_*time_step << endl;
 	
-	cout << "The neuron has fired " << cells_[0]->Neuron::getSpikeNumb() << " times" <<endl;
+	cout << "Neuron 1 has fired " << cells_[0]->Neuron::getSpikeNumb() << " times" <<endl;
+	cout << "Neuron 2 has fired " << cells_[1]->Neuron::getSpikeNumb() << " times" <<endl;
 	
 }
 
 
 
-bool Simulation::neurons_update(ofstream& out)
+bool Simulation::neurons_update()
 {
 	//updating all neurons in simulation
-	for (auto& neuron : cells_)
+	for (auto& cell: cells_)
 	{
 		//when an external current is applied
 		if(time_*time_step>abound and time_*time_step< bbound)
 		{
-			neuron->Neuron::update(time_step, time_*time_step, Iext);  //need to convert back to time in double
+
+			cell->Neuron::update(time_step, time_*time_step, Iext);  //need to convert back to time in double
 		} 
 		//when no external current is applied
 		else {
-			neuron->Neuron::update(time_step, time_*time_step);
+			cell->Neuron::update(time_step, time_*time_step);
 		}
-		
-		//storing membrane potential value in.txt file
-		out << neuron->getMembPot() << " " ;
 	}
 	
 	return true;

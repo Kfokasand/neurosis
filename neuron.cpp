@@ -2,7 +2,7 @@
 #include <cmath>
 
 
-Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double reset, double spiket)
+Neuron::Neuron(string name, double iMembPot, double iSpikeNumb, double t, double tref, double reset, double spiket)
 		:MembPot(iMembPot), SpikeNumb(iSpikeNumb), 
 		 Cap(reset), Tau(t),
 		 TauRef(tref), Vres(reset), SpikeThreshold(spiket)
@@ -12,6 +12,12 @@ Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double
 			SpikeNumb=0;
 			cout << "initial number of spikes is : " << SpikeNumb << endl;
 			Res=Tau/Cap;
+			
+			//opening channel to store membrane potentials
+			history.open("history" + name +".txt");
+			cout << "channel history " +name + " has been opened" << endl;
+
+	
 			//initialising cells own clock
 			cell_time=0;
 			delay_=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
@@ -19,24 +25,27 @@ Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double
 			buffer_=(vector<double> (delay_,0));
 		}
 
-/*Neuron::~Neuron()
+Neuron::~Neuron()
 		{
+			history.close();
 			//comment liberer proprement la mémoire si plusieurs neurones pointent sur la mm cellule 
-			for(auto& neighbor : neighbors_)
+			/*for(auto& neighbor : neighbors_)
 			{
 				neighbor =delete; // va effacer le neurone -> c'est pas bien
 				neighbor= nullptr;
-			}
+			}*/
 		}
-*/ //A DISCUTER
+//A DISCUTER
 		
 double Neuron::getMembPot() const
 {
 	return MembPot;
 }
 
-void Neuron::setMembPot()
-{}
+void Neuron::setMembPot(double value)
+{
+	MembPot=value;
+}
 
 double Neuron::getSpikeNumb() const 
 {
@@ -58,6 +67,7 @@ void Neuron::update(double TimeStep, double time, double Iext)// time has been c
 		{
 			fire(time);
 		}
+		
 	} 
 	
 	//if the neuron is still in its refractory period the membrane potential stays at reset value
@@ -66,8 +76,13 @@ void Neuron::update(double TimeStep, double time, double Iext)// time has been c
 		resetMembPot();
 	}
 	
+			
+	//storing membrane potential value in.txt file
+	history << MembPot << " " ;
+
 	//incrementing cell's clock
 	cell_time+=1;
+	
 }
 
 void Neuron::resetMembPot()
@@ -99,7 +114,7 @@ double Neuron::getLastSpike()
 void Neuron::recieve(double charge, int time)
 {
 	buffer_[time%delay_]=charge;
-	//cout << "I have received something" << endl;
+	cout << "Stored " << charge << " in buffer" << endl;
 }
 
 void Neuron::send(double charge)

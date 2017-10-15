@@ -3,7 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <string>
+#include <fstream>
 #include "relation.hpp"
+
 
 using namespace std;
 
@@ -28,6 +31,7 @@ class Neuron{
 		double Cap; //capacity
 		double Res; //resistance
 		double Tau; //I'm not sure
+		ofstream history;
 		
 	//personal variables which stay constant once intialised
 
@@ -41,9 +45,9 @@ class Neuron{
 
 
 	//constructor provided with default values
-		Neuron(double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20);
+		Neuron(string name, double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20);
 		Neuron(const Neuron& other) = delete;
-		//~Neuron();
+		~Neuron();
 
 	//getters 
 		double getMembPot() const;
@@ -54,11 +58,12 @@ class Neuron{
 
 		
 	//setters
-		void setMembPot();
+		void setMembPot(double value);
 
 	//cell dev methods
 	
 		//changes value of membrane potential according to time laps, external current or spikes
+		//returns true if the cell fires
 		void update(double TimeStep, double time, double Iext=0);
 		//resets membrane potential to rest value
 		void resetMembPot();
@@ -72,8 +77,6 @@ class Neuron{
 		void add_neighbors(vector<Neuron*>& cells);
 
 		
-		
-
 };
 
 

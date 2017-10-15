@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 int main()
 {	
 	Simulation sim1(0.1);	
