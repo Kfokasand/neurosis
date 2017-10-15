@@ -24,7 +24,7 @@ class Simulation{
 
 	//simulation variables
 	int time_; // is counted as increments of the timestep
-	vector<Neuron> cells_; //stores the created neurons
+	vector<Neuron*> cells_; //stores the created neurons
 	
 	
 	void set_sim_time();

@@ -77,7 +77,7 @@ void Neuron::fire(double time)
 	send(MembPot);
 	//reseting membrane potential
 	resetMembPot();
-	cout << "a neuron has fired" << endl;
+	//cout << "a neuron has fired" << endl;
 
 }
 
@@ -89,29 +89,29 @@ double Neuron::getLastSpike()
 void Neuron::recieve(double charge, int time)
 {
 	buffer_[time%delay_]=charge;
-	cout << "I have received something" << endl;
+	//cout << "I have received something" << endl;
 }
 
 void Neuron::send(double charge)
 {
-	cout << "entered send " << endl;
+	//cout << "entered send " << endl;
 	//go through all neighbors and call their recieve function with the right coeff
 	if(neighbors_.empty()) {cout << "But there are no neighbors" << endl;}
 	for(auto neighbor:neighbors_)
 	{
-		cout << "I have sent something " << endl;
+		//cout << "I have sent something " << endl;
 		neighbor.n->recieve(charge, cell_time);
 	}
 }
 
-void Neuron::add_neighbors(const vector<Neuron>& cells)
+void Neuron::add_neighbors(vector<Neuron*>& cells)
 {
 
 	if(cells.empty()){ cout << "argument vector is empty though" << endl;}
-	for(auto cell: cells)
+	for(auto& cell: cells)
 	{
 		cout << "entered adding neighbors " << endl;
-		rel* blip = new rel {&cell,1.0};
+		rel* blip = new rel {cell,1.0};
 		neighbors_.push_back(*blip);
 	}
 	cout << "cell has " <<neighbors_.size() << " neighbors" << endl;
