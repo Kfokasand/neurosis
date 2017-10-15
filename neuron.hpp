@@ -5,6 +5,8 @@
 #include <cmath>
 #include <string>
 #include <fstream>
+#include "relation.hpp"
+
 
 using namespace std;
 
@@ -19,6 +21,10 @@ class Neuron{
 		double MembPot;
 		double SpikeNumb;;
 		vector<double> SpikeHistory;
+		//implement delay in current reception
+		vector<double> buffer_;
+		//internal cell clock
+		int cell_time;
 		
 		
 	//personal variables which may change with time
@@ -32,17 +38,15 @@ class Neuron{
 		double TauRef; // refractory perdiod
 		double Vres; //membrane potential after spike
 		double SpikeThreshold; //potential to trigger neuron spike
-
+		vector<rel> neighbors_; 
+		int delay_;
 
 	public:
 
 
 	//constructor provided with default values
 		Neuron(string name, double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20);
-	//copy constuctor to handle flow
-		Neuron(const Neuron& other);
-		
-	//destructor meant to close flow to hsitory file
+		Neuron(const Neuron& other) = delete;
 		~Neuron();
 
 	//getters 
@@ -54,25 +58,27 @@ class Neuron{
 
 		
 	//setters
-		void setMembPot();
+		void setMembPot(double value);
 
 	//cell dev methods
 	
 		//changes value of membrane potential according to time laps, external current or spikes
 		//returns true if the cell fires
-		bool update(double TimeStep, double time, double Iext=0);
+		void update(double TimeStep, double time, double Iext=0);
 		//resets membrane potential to rest value
 		void resetMembPot();
 		//the neuron fires an action potentian and then resets
 		void fire(double time);
-		//the neuron received an action potential
-		void receive();
+		//recieve voltage from another neuron
+		void recieve(double charge, int time); //use general time since both cells wright in time_%D index of vector 
+		//send spike to all neighbors
+		void send(double charge);
+		//add tab of cells into tab of neighbors
+		void add_neighbors(vector<Neuron*>& cells);
 
 		
-	//storing history in main to have time component
-		//void storeMembPot();
-		
-
 };
+
+
 
 #endif

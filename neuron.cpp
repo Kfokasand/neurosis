@@ -13,29 +13,39 @@ Neuron::Neuron(string name, double iMembPot, double iSpikeNumb, double t, double
 			cout << "initial number of spikes is : " << SpikeNumb << endl;
 			Res=Tau/Cap;
 			
-
 			//opening channel to store membrane potentials
 			history.open("history" + name +".txt");
 			cout << "channel history " +name + " has been opened" << endl;
+
+	
+			//initialising cells own clock
+			cell_time=0;
+			delay_=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
+			//initialising buffer with all 0 values
+			buffer_=(vector<double> (delay_,0));
 		}
 
-Neuron::Neuron(const Neuron& other)
-		:
-{
-	//handle flow transfer
-	
-}
-		
 Neuron::~Neuron()
-		{history.close();}
+		{
+			history.close();
+			//comment liberer proprement la mémoire si plusieurs neurones pointent sur la mm cellule 
+			/*for(auto& neighbor : neighbors_)
+			{
+				neighbor =delete; // va effacer le neurone -> c'est pas bien
+				neighbor= nullptr;
+			}*/
+		}
+//A DISCUTER
 		
 double Neuron::getMembPot() const
 {
 	return MembPot;
 }
 
-void Neuron::setMembPot()
-{}
+void Neuron::setMembPot(double value)
+{
+	MembPot=value;
+}
 
 double Neuron::getSpikeNumb() const 
 {
@@ -43,7 +53,7 @@ double Neuron::getSpikeNumb() const
 }
 
 
-bool Neuron::update(double TimeStep, double time, double Iext)// time has been converted to appropriate double in calling of method
+void Neuron::update(double TimeStep, double time, double Iext)// time has been converted to appropriate double in calling of method
 {
 	double EXP1 (exp(-TimeStep/Tau));
 	
@@ -58,7 +68,6 @@ bool Neuron::update(double TimeStep, double time, double Iext)// time has been c
 			fire(time);
 		}
 		
-		return false;
 	} 
 	
 	//if the neuron is still in its refractory period the membrane potential stays at reset value
@@ -70,7 +79,10 @@ bool Neuron::update(double TimeStep, double time, double Iext)// time has been c
 			
 	//storing membrane potential value in.txt file
 	history << MembPot << " " ;
-	return false;
+
+	//incrementing cell's clock
+	cell_time+=1;
+	
 }
 
 void Neuron::resetMembPot()
@@ -85,15 +97,48 @@ void Neuron::fire(double time)
 	SpikeNumb+=1;
 	//storing the time of the action potential
 	SpikeHistory.push_back(time);
+	
+	//sending voltage to all neighbor cells
+	send(MembPot);
 	//reseting membrane potential
 	resetMembPot();
-	cout << "a neuron has fired" << endl;
+	//cout << "a neuron has fired" << endl;
 
 }
-
 
 double Neuron::getLastSpike()
 {
 	return SpikeHistory[SpikeHistory.size()-1];
+}
+
+void Neuron::recieve(double charge, int time)
+{
+	buffer_[time%delay_]=charge;
+	cout << "Stored " << charge << " in buffer" << endl;
+}
+
+void Neuron::send(double charge)
+{
+	//cout << "entered send " << endl;
+	//go through all neighbors and call their recieve function with the right coeff
+	if(neighbors_.empty()) {cout << "But there are no neighbors" << endl;}
+	for(auto neighbor:neighbors_)
+	{
+		//cout << "I have sent something " << endl;
+		neighbor.n->recieve(charge, cell_time);
+	}
+}
+
+void Neuron::add_neighbors(vector<Neuron*>& cells)
+{
+
+	if(cells.empty()){ cout << "argument vector is empty though" << endl;}
+	for(auto& cell: cells)
+	{
+		//cout << "entered adding neighbors " << endl;
+		rel* blip = new rel {cell,1.0};
+		neighbors_.push_back(*blip);
+	}
+	cout << "cell has " <<neighbors_.size() << " neighbors" << endl;
 }
 

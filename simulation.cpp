@@ -8,7 +8,15 @@ Simulation::Simulation(double timestep, int time)
 				set_current();	
 			}
 
-
+Simulation::~Simulation()
+			{
+				for(auto& cell: cells_)
+				{
+					delete cell;
+					cell=nullptr;
+				}
+				
+			}
 void Simulation::set_sim_time()
 {
 
@@ -41,17 +49,21 @@ void Simulation::set_current()
 
 void Simulation::new_neuron(string name)
 {
-	Neuron n1(name);
-	cout << "you've constructed a neuron " << endl;
-	cells_.push_back(n1);
-	cout << "you've stored a neuron " << endl;
+	Neuron* n1 = new Neuron (name);
+	/*'doesn't like it, copies are created!! how to avoid it ?'*/
+	cells_.push_back(n1); // creating a dynamic neuron avoid copies
+	// for now all cells are neigbors
 }
 
 void Simulation::run()
 {
-	new_neuron("1");
-	//new_neuron("2");
-	cout << "you've been here " << endl;	
+	new_neuron("n1");
+	new_neuron("n2");
+	cells_[1]->setMembPot(0);
+	network();
+	//opening channel to store membrane potentials
+	ofstream history;
+	history.open("history.txt");	
 	
 	//updating cell
 	do{
@@ -64,32 +76,35 @@ void Simulation::run()
 
 	cout << time_*time_step << endl;
 	
-	cout << "The neuron has fired " << cells_[0].Neuron::getSpikeNumb() << " times" <<endl;
+	cout << "Neuron 1 has fired " << cells_[0]->Neuron::getSpikeNumb() << " times" <<endl;
+	cout << "Neuron 2 has fired " << cells_[1]->Neuron::getSpikeNumb() << " times" <<endl;
 	
 }
+
+
 
 bool Simulation::neurons_update()
 {
 	//updating all neurons in simulation
-	for (size_t i(0); i< cells_.size(); ++i)
+	for (auto& cell: cells_)
 	{
 		//when an external current is applied
-		/*if(time_*time_step>abound and time_*time_step< bbound)
+		if(time_*time_step>abound and time_*time_step< bbound)
 		{
-			if((cells_[i].Neuron::update(time_step, time_*time_step, Iext))// convert back to time in double 
-		 
-				{//need to check the cell exists ! is within bounds
-					cells_[i+1].recieve();
-				} 
-				
-		}
+
+			cell->Neuron::update(time_step, time_*time_step, Iext);  //need to convert back to time in double
+		} 
 		//when no external current is applied
 		else {
-			cells_[i].Neuron::update(time_step, time_*time_step);
-		}*/
-
+			cell->Neuron::update(time_step, time_*time_step);
+		}
 	}
-
 	
 	return true;
+}
+
+void Simulation::network()
+{
+	for(auto& cell:cells_)
+	{	cell->add_neighbors(cells_); }
 }

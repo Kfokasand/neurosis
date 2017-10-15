@@ -2,7 +2,6 @@
 #define SIM_H
 #include "neuron.hpp"
 
-
 using namespace std;
 
 class Simulation{
@@ -22,7 +21,7 @@ class Simulation{
 
 	//simulation variables
 	int time_; // is counted as increments of the timestep
-	vector<Neuron> cells_; //stores the created neurons
+	vector<Neuron*> cells_; //stores the created neurons
 	
 	
 	void set_sim_time();
@@ -31,11 +30,13 @@ class Simulation{
 	public:
 	
 	Simulation(double timestep, int time=0);
+	~Simulation();
 	void run();
 	void new_neuron(string name);
 	//chosen as a bool to ensure all neurons have been succesfully updated at each step (test may be done with a catch and throw or asset
+	
 	bool neurons_update();
-
+	void network();
 
 
 };
