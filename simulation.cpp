@@ -8,7 +8,15 @@ Simulation::Simulation(double timestep, int time)
 				set_current();	
 			}
 
-
+Simulation::~Simulation()
+			{
+				for(auto& cell: cells_)
+				{
+					delete cell;
+					cell=nullptr;
+				}
+				
+			}
 void Simulation::set_sim_time()
 {
 
@@ -91,7 +99,6 @@ bool Simulation::neurons_update(ofstream& out)
 		//storing membrane potential value in.txt file
 		out << neuron->getMembPot() << " " ;
 	}
-
 	
 	return true;
 }

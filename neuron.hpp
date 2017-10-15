@@ -43,6 +43,7 @@ class Neuron{
 	//constructor provided with default values
 		Neuron(double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20);
 		Neuron(const Neuron& other) = delete;
+		//~Neuron();
 
 	//getters 
 		double getMembPot() const;

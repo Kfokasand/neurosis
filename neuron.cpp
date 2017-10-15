@@ -17,8 +17,18 @@ Neuron::Neuron(double iMembPot, double iSpikeNumb, double t, double tref, double
 			delay_=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
 			//initialising buffer with all 0 values
 			buffer_=(vector<double> (delay_,0));
-
 		}
+
+/*Neuron::~Neuron()
+		{
+			//comment liberer proprement la mémoire si plusieurs neurones pointent sur la mm cellule 
+			for(auto& neighbor : neighbors_)
+			{
+				neighbor =delete; // va effacer le neurone -> c'est pas bien
+				neighbor= nullptr;
+			}
+		}
+*/ //A DISCUTER
 		
 double Neuron::getMembPot() const
 {
@@ -110,7 +120,7 @@ void Neuron::add_neighbors(vector<Neuron*>& cells)
 	if(cells.empty()){ cout << "argument vector is empty though" << endl;}
 	for(auto& cell: cells)
 	{
-		cout << "entered adding neighbors " << endl;
+		//cout << "entered adding neighbors " << endl;
 		rel* blip = new rel {cell,1.0};
 		neighbors_.push_back(*blip);
 	}
