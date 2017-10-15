@@ -8,7 +8,15 @@ Simulation::Simulation(double timestep, int time)
 				set_current();	
 			}
 
-
+Simulation::~Simulation()
+			{
+				for(auto& cell: cells_)
+				{
+					delete cell;
+					cell=nullptr;
+				}
+				
+			}
 void Simulation::set_sim_time()
 {
 
@@ -41,13 +49,17 @@ void Simulation::set_current()
 
 void Simulation::new_neuron()
 {
-	Neuron n1;
-	cells_.push_back(n1);
+	Neuron* n1 = new Neuron ();
+	/*'doesn't like it, copies are created!! how to avoid it ?'*/
+	cells_.push_back(n1); // creating a dynamic neuron avoid copies
+	// for now all cells are neigbors
 }
 
 void Simulation::run()
 {
 	new_neuron();
+	new_neuron();
+	network();
 	//opening channel to store membrane potentials
 	ofstream history;
 	history.open("history.txt");	
@@ -63,9 +75,11 @@ void Simulation::run()
 
 	cout << time_*time_step << endl;
 	
-	cout << "The neuron has fired " << cells_[0].Neuron::getSpikeNumb() << " times" <<endl;
+	cout << "The neuron has fired " << cells_[0]->Neuron::getSpikeNumb() << " times" <<endl;
 	
 }
+
+
 
 bool Simulation::neurons_update(ofstream& out)
 {
@@ -75,17 +89,22 @@ bool Simulation::neurons_update(ofstream& out)
 		//when an external current is applied
 		if(time_*time_step>abound and time_*time_step< bbound)
 		{
-			neuron.Neuron::update(time_step, time_*time_step, Iext);  //need to convert back to time in double
+			neuron->Neuron::update(time_step, time_*time_step, Iext);  //need to convert back to time in double
 		} 
 		//when no external current is applied
 		else {
-			neuron.Neuron::update(time_step, time_*time_step);
+			neuron->Neuron::update(time_step, time_*time_step);
 		}
 		
 		//storing membrane potential value in.txt file
-		out << neuron.getMembPot() << " " ;
+		out << neuron->getMembPot() << " " ;
 	}
-
 	
 	return true;
+}
+
+void Simulation::network()
+{
+	for(auto& cell:cells_)
+	{	cell->add_neighbors(cells_); }
 }
