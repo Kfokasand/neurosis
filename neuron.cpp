@@ -1,28 +1,31 @@
 #include "neuron.hpp"
 #include <cmath>
+#include <assert.h>
 
 
-Neuron::Neuron(string name, double iMembPot, double iSpikeNumb, double t, double tref, double reset, double spiket)
-		:MembPot(iMembPot), SpikeNumb(iSpikeNumb), 
-		 Cap(reset), Tau(t),
-		 TauRef(tref), Vres(reset), SpikeThreshold(spiket)
+Neuron::Neuron(string name)
+//double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20
+		:Name(name),MembPot(0), SpikeNumb(0), 
+		 Cap(1), Tau(20),
+		 TauRef(2), Vres(0), SpikeThreshold(20)
 		{
 			cout << "a neuron is born" << endl;
 			cout << "initial membrane potential is : " << MembPot << endl;
 			SpikeNumb=0;
 			cout << "initial number of spikes is : " << SpikeNumb << endl;
-			Res=Tau/Cap;
+			Res=20;
 			
 			//opening channel to store membrane potentials
 			history.open("history" + name +".txt");
 			cout << "channel history " +name + " has been opened" << endl;
+			history << "Member potential for neuron " << name;
 
 	
 			//initialising cells own clock
-			cell_time=0;
+			CellTime=0;
 			delay_=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
 			//initialising buffer with all 0 values
-			buffer_=(vector<double> (delay_,0));
+			Buffer=(vector<double> (delay_+1,0));
 		}
 
 Neuron::~Neuron()
@@ -53,19 +56,18 @@ double Neuron::getSpikeNumb() const
 }
 
 
-void Neuron::update(double TimeStep, double time, double Iext)// time has been converted to appropriate double in calling of method
+void Neuron::Update(double TimeStep, double time, double Iext)// time has been converted to appropriate double in calling of method
 {
 	double EXP1 (exp(-TimeStep/Tau));
-	
 	//checking the refractory period has passed since last spike 
 	//or that there has been no spike yet
 	if((!SpikeHistory.empty() and time>=getLastSpike()+TauRef) or SpikeHistory.empty()) 
 	{
-		MembPot= MembPot*EXP1+Iext*Res*(1-EXP1);
+		MembPot= (MembPot*EXP1+Iext*Res*(1-EXP1)+Buffer[Index(CellTime)]);
 
-		if(MembPot>SpikeThreshold) // if the membrane potential crosses the threshold an action potential is fired
+		if(MembPot>SpikeThreshold) // if the membrane potential crosses the threshold an action potential is Fired
 		{
-			fire(time);
+			Fire(time, TimeStep);
 		}
 		
 	} 
@@ -73,37 +75,44 @@ void Neuron::update(double TimeStep, double time, double Iext)// time has been c
 	//if the neuron is still in its refractory period the membrane potential stays at reset value
 	else if (!SpikeHistory.empty() and time<=getLastSpike()+TauRef)
 	{ 
-		resetMembPot();
+		Reset();
 	}
 	
 			
 	//storing membrane potential value in.txt file
-	history << MembPot << " " ;
-
+	history  << " at time "<< time << " ms : " << MembPot << "\n" ;
+	history << "Buffer values: \n";
+	for(auto val : Buffer)
+	{
+		history << "||" << val;
+	}
+	history << "||";
+	//resetting used buffer value
+	Buffer[Index(CellTime)];
 	//incrementing cell's clock
-	cell_time+=1;
+	CellTime+=1;
 	
 }
 
-void Neuron::resetMembPot()
+void Neuron::Reset()
 {
 	MembPot=Vres;
 }
 
 
-void Neuron::fire(double time)
+void Neuron::Fire(double time, double time_step)
 {
 	//incrementing number of spikes of particular neuron
 	SpikeNumb+=1;
 	//storing the time of the action potential
 	SpikeHistory.push_back(time);
 	
-	//sending voltage to all neighbor cells
-	send(MembPot);
+	//Sending voltage to all neighbor cells
+	Send();
 	//reseting membrane potential
-	resetMembPot();
-	//cout << "a neuron has fired" << endl;
-
+	Reset();
+	cout << Name << " neuron has Fired at " << time<< endl;
+	history << "\n SPIKED at " << time <<"\n";
 }
 
 double Neuron::getLastSpike()
@@ -111,34 +120,40 @@ double Neuron::getLastSpike()
 	return SpikeHistory[SpikeHistory.size()-1];
 }
 
-void Neuron::recieve(double charge, int time)
+void Neuron::Receive(double charge, int time)
 {
-	buffer_[time%delay_]=charge;
+	assert(Index(time+delay_) < Buffer.size());
+	Buffer[Index(time+delay_)]=charge;
 	cout << "Stored " << charge << " in buffer" << endl;
 }
 
-void Neuron::send(double charge)
+void Neuron::Send()
 {
-	//cout << "entered send " << endl;
-	//go through all neighbors and call their recieve function with the right coeff
+	//cout << "entered Send " << endl;
+	//go through all neighbors and call their Receive function with the right coeff
 	if(neighbors_.empty()) {cout << "But there are no neighbors" << endl;}
 	for(auto neighbor:neighbors_)
 	{
 		//cout << "I have sent something " << endl;
-		neighbor.n->recieve(charge, cell_time);
+		neighbor.n->Receive(neighbor.Jay,CellTime);
 	}
 }
 
-void Neuron::add_neighbors(vector<Neuron*>& cells)
+void Neuron::AddNeighbors(vector<Neuron*>& cells)
 {
 
 	if(cells.empty()){ cout << "argument vector is empty though" << endl;}
 	for(auto& cell: cells)
 	{
 		//cout << "entered adding neighbors " << endl;
-		rel* blip = new rel {cell,1.0};
+		rel* blip = new rel {cell,0.1};
 		neighbors_.push_back(*blip);
 	}
 	cout << "cell has " <<neighbors_.size() << " neighbors" << endl;
+}
+
+int Neuron::Index(int time)
+{
+	return time%delay_;
 }
 
