@@ -31,6 +31,7 @@ class Neuron{
 		double Res; //resistance
 		double Tau; //I'm not sure
 		ofstream history;
+		bool Stim;
 		
 	//personal variables which stay constant once intialised
 
@@ -38,8 +39,8 @@ class Neuron{
 		const double TauRef; // refractory perdiod
 		const double Vres; //membrane potential after spike
 		const double SpikeThreshold; //potential to trigger neuron spike
-		vector<rel> neighbors_; 
-		int delay_;
+		vector<rel> Neighbors; 
+		int Delay;
 		
 	//private methods
 		
@@ -63,12 +64,13 @@ class Neuron{
 
 	//setters
 		void setMembPot(double value);
+		void setStim(bool stim);
 
 	//cell dev methods
 	
 		//changes value of membrane potential according to time laps, external current or spikes
 		//returns true if the cell Fires
-		void Update(double TimeStep, double time, double Iext=0);
+		void Update(double TimeStep, double time, double Iext);
 		//resets membrane potential to rest value
 		void Reset();
 		//the neuron Fires an action potentian and then resets
@@ -81,7 +83,5 @@ class Neuron{
 		void AddNeighbors(vector<Neuron*>& cells);
 
 };
-
-
 
 #endif

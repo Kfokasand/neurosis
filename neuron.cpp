@@ -6,7 +6,7 @@
 Neuron::Neuron(string name)
 //double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20
 		:Name(name),MembPot(0), SpikeNumb(0), 
-		 Cap(1), Tau(20),
+		 Cap(1), Tau(20),Stim(0),
 		 TauRef(2), Vres(0), SpikeThreshold(20)
 		{
 			cout << "a neuron is born" << endl;
@@ -23,16 +23,16 @@ Neuron::Neuron(string name)
 	
 			//initialising cells own clock
 			CellTime=0;
-			delay_=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
+			Delay=1.5/0.1; //replace the 0.1 by time step but then need to dd in constructor
 			//initialising buffer with all 0 values
-			Buffer=(vector<double> (delay_+1,0));
+			Buffer=(vector<double> (Delay+1,0));
 		}
 
 Neuron::~Neuron()
 		{
 			history.close();
 			//comment liberer proprement la mémoire si plusieurs neurones pointent sur la mm cellule 
-			/*for(auto& neighbor : neighbors_)
+			/*for(auto& neighbor : Neighbors)
 			{
 				neighbor =delete; // va effacer le neurone -> c'est pas bien
 				neighbor= nullptr;
@@ -63,7 +63,8 @@ void Neuron::Update(double TimeStep, double time, double Iext)// time has been c
 	//or that there has been no spike yet
 	if((!SpikeHistory.empty() and time>=getLastSpike()+TauRef) or SpikeHistory.empty()) 
 	{
-		MembPot= (MembPot*EXP1+Iext*Res*(1-EXP1)+Buffer[Index(CellTime)]);
+		if (Stim) {		MembPot= (MembPot*EXP1+Iext*Res*(1-EXP1)+Buffer[Index(CellTime)]); }
+		else { MembPot= (MembPot*EXP1+Buffer[Index(CellTime)]); }
 
 		if(MembPot>SpikeThreshold) // if the membrane potential crosses the threshold an action potential is Fired
 		{
@@ -122,8 +123,8 @@ double Neuron::getLastSpike()
 
 void Neuron::Receive(double charge, int time)
 {
-	assert(Index(time+delay_) < Buffer.size());
-	Buffer[Index(time+delay_)]=charge;
+	assert(Index(time+Delay) < Buffer.size());
+	Buffer[Index(time+Delay)]=charge;
 	cout << "Stored " << charge << " in buffer" << endl;
 }
 
@@ -131,11 +132,11 @@ void Neuron::Send()
 {
 	//cout << "entered Send " << endl;
 	//go through all neighbors and call their Receive function with the right coeff
-	if(neighbors_.empty()) {cout << "But there are no neighbors" << endl;}
-	for(auto neighbor:neighbors_)
+	if(Neighbors.empty()) {cout << "But there are no neighbors" << endl;}
+	for(auto neighbor: Neighbors)
 	{
 		//cout << "I have sent something " << endl;
-		neighbor.n->Receive(neighbor.Jay,CellTime);
+		neighbor.n->Receive(neighbor.J,CellTime);
 	}
 }
 
@@ -147,13 +148,17 @@ void Neuron::AddNeighbors(vector<Neuron*>& cells)
 	{
 		//cout << "entered adding neighbors " << endl;
 		rel* blip = new rel {cell,0.1};
-		neighbors_.push_back(*blip);
+		Neighbors.push_back(*blip);
 	}
-	cout << "cell has " <<neighbors_.size() << " neighbors" << endl;
+	cout << "cell has " <<Neighbors.size() << " neighbors" << endl;
 }
 
 int Neuron::Index(int time)
 {
-	return time%delay_;
+	return time%Delay;
 }
 
+void Neuron::setStim(bool stim)
+{
+	Stim=stim;
+}

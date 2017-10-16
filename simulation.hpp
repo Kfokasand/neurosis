@@ -11,32 +11,32 @@ class Simulation{
 	//simulation constants
 
 //given by main
-	double time_step;
+	double TimeStep;
 //given by user
-	double sim_time;
+	double SimTime;
 	double Iext;
 	//time boundaries for external current application
 	double abound;
 	double bbound;
 
 	//simulation variables
-	int time_; // is counted as increments of the timestep
-	vector<Neuron*> cells_; //stores the created neurons
+	int Time; // is counted as increments of the timestep
+	vector<Neuron*> Cells; //stores the created neurons
 	
 	
-	void set_sim_time();
-	void set_current();
+	void SetSimTime();
+	void SetCurrent();
 	
 	public:
 	
 	Simulation(double timestep, int time=0);
 	~Simulation();
-	void run();
-	void new_neuron(string name);
+	void Run();
+	void NewNeuron(string name);
 	//chosen as a bool to ensure all neurons have been succesfully updated at each step (test may be done with a catch and throw or asset
 	
-	bool neurons_update();
-	void network();
+	bool NeuronsUpdate();
+	void Network();
 
 
 };

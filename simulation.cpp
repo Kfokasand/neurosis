@@ -2,29 +2,29 @@
 
 
 Simulation::Simulation(double timestep, int time)
-			:time_step(timestep), time_(time)
+			:TimeStep(timestep), Time(time)
 			{ 	cout<< "You are intialising a simulation" << endl <<"Please enter settings" <<endl;
-				set_sim_time();
-				set_current();	
+				SetSimTime();
+				SetCurrent();	
 			}
 
 Simulation::~Simulation()
 			{
-				for(auto& cell: cells_)
+				for(auto& cell: Cells)
 				{
 					delete cell;
 					cell=nullptr;
 				}
 				
 			}
-void Simulation::set_sim_time()
+void Simulation::SetSimTime()
 {
 
 	//check the imput
 	do {
 		cout << endl << "Set simulation time in ms : ";
-		cin>> sim_time;	
-	} while(sim_time<0);
+		cin>> SimTime;	
+	} while(SimTime<0);
 	
 	/*if (!cin) // same as cin.fail() checking value type
 	{
@@ -36,10 +36,10 @@ void Simulation::set_sim_time()
 
 
 
-void Simulation::set_current()
+void Simulation::SetCurrent()
 {
 	//check the imput
-	cout<< "Set value of external current :";
+	cout<< "Set value of external current apllied to neuron 1:";
 	cin>>Iext;
 	cout << "Set time limits : a=";
 	cin>>abound;
@@ -47,64 +47,60 @@ void Simulation::set_current()
 	cin>>bbound;
 }
 
-void Simulation::new_neuron(string name)
+void Simulation::NewNeuron(string name)
 {
 	Neuron* n1 = new Neuron (name);
 	/*'doesn't like it, copies are created!! how to avoid it ?'*/
-	cells_.push_back(n1); // creating a dynamic neuron avoid copies
+	Cells.push_back(n1); // creating a dynamic neuron avoid copies
 	// for now all cells are neigbors
 }
 
-void Simulation::run()
+void Simulation::Run()
 {
-	new_neuron("n1");
-	new_neuron("n2");
-	cells_[1]->setMembPot(0);
-	network();
+	NewNeuron("n1");
+	NewNeuron("n2");
+	Cells[1]->setMembPot(0);
+	Network();
 	//opening channel to store membrane potentials
 	ofstream history;
 	history.open("history.txt");	
 	
 	//updating cell
 	do{
-		neurons_update();
+		NeuronsUpdate();
 		
-		//incremeting simulation time_
-		time_+=1;
+		//incremeting simulation Time
+		Time+=1;
 	}
-	while(time_*time_step< sim_time);
+	while(Time*TimeStep< SimTime);
 
-	cout << time_*time_step << endl;
+	cout << Time*TimeStep << endl;
 	
-	cout << "Neuron 1 has fired " << cells_[0]->Neuron::getSpikeNumb() << " times" <<endl;
-	cout << "Neuron 2 has fired " << cells_[1]->Neuron::getSpikeNumb() << " times" <<endl;
+	cout << "Neuron 1 has fired " << Cells[0]->Neuron::getSpikeNumb() << " times" <<endl;
+	cout << "Neuron 2 has fired " << Cells[1]->Neuron::getSpikeNumb() << " times" <<endl;
 	
 }
 
 
 
-bool Simulation::neurons_update()
+bool Simulation::NeuronsUpdate()
 {
-	//updating all neurons in simulation
-	for (auto& cell: cells_)
+	if(Time*TimeStep>abound and Time*TimeStep< bbound)
 	{
-		//when an external current is applied
-		if(time_*time_step>abound and time_*time_step< bbound)
-		{
-
-			cell->Neuron::update(time_step, time_*time_step, Iext);  //need to convert back to time in double
-		} 
-		//when no external current is applied
-		else {
-			cell->Neuron::update(time_step, time_*time_step);
-		}
+		Cells[0]->setStim(1);
+	}
+	
+	//updating all neurons in simulation
+	for (auto& cell: Cells)
+	{
+		cell->Neuron::Update(TimeStep, Time*TimeStep, Iext);  //need to convert back to time in double
 	}
 	
 	return true;
 }
 
-void Simulation::network()
+void Simulation::Network()
 {
-	for(auto& cell:cells_)
-	{	cell->add_neighbors(cells_); }
+	for(auto& cell:Cells)
+	{	cell->AddNeighbors(Cells); }
 }
