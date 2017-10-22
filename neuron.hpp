@@ -23,7 +23,7 @@ class Neuron{
 		vector<double> SpikeHistory;
 		//implement delay in current reception
 		vector<double> Buffer;
-		//internal cell clock
+		//internal cell clock counted as increments of H
 		int CellTime;
 		
 	//personal variables which may change with time
@@ -70,17 +70,18 @@ class Neuron{
 	
 		//changes value of membrane potential according to time laps, external current or spikes
 		//returns true if the cell Fires
-		void Update(double TimeStep, double time, double Iext);
+		void Update(double H, double Realtime, double Iext);
 		//resets membrane potential to rest value
 		void Reset();
 		//the neuron Fires an action potentian and then resets
-		void Fire(double time, double time_step);
+		void Fire(double RealTime, double H);
 		//Receive voltage from another neuron
 		void Receive(double charge, int time); //use general time since both cells wright in time_%D Index of vector 
 		//Send spike to all neighbors
 		void Send();
 		//add tab of cells into tab of neighbors
 		void AddNeighbors(vector<Neuron*>& cells);
+		void AddNeighbors(Neuron** cells, int  cellCount);
 
 };
 
