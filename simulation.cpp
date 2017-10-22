@@ -1,8 +1,10 @@
 #include "simulation.hpp"
+#include <cstdlib>
+#include <array>
+#include <list>
 
-
-Simulation::Simulation(double timestep, int time)
-			:TimeStep(timestep), Time(time)
+Simulation::Simulation(double timestep)
+			:H(timestep),StepTime(0)
 			{ 	cout<< "You are intialising a simulation" << endl <<"Please enter settings" <<endl;
 				SetSimTime();
 				SetCurrent();	
@@ -17,6 +19,7 @@ Simulation::~Simulation()
 				}
 				
 			}
+			
 void Simulation::SetSimTime()
 {
 
@@ -39,7 +42,7 @@ void Simulation::SetSimTime()
 void Simulation::SetCurrent()
 {
 	//check the imput
-	cout<< "Set value of external current apllied to neuron 1:";
+	cout<< "Set value of external current apllied to neuron 1: ";
 	cin>>Iext;
 	cout << "Set time limits : a=";
 	cin>>abound;
@@ -69,12 +72,10 @@ void Simulation::Run()
 	do{
 		NeuronsUpdate();
 		
-		//incremeting simulation Time
-		Time+=1;
+		//incremeting simulation Time in steps
+		StepTime+=1;
 	}
-	while(Time*TimeStep< SimTime);
-
-	cout << Time*TimeStep << endl;
+	while(RealTime(StepTime)< SimTime); //checkingif simulation has reached it's end in ms
 	
 	cout << "Neuron 1 has fired " << Cells[0]->Neuron::getSpikeNumb() << " times" <<endl;
 	cout << "Neuron 2 has fired " << Cells[1]->Neuron::getSpikeNumb() << " times" <<endl;
@@ -85,7 +86,7 @@ void Simulation::Run()
 
 bool Simulation::NeuronsUpdate()
 {
-	if(Time*TimeStep>abound and Time*TimeStep< bbound)
+	if(RealTime(StepTime)>abound and RealTime(StepTime)< bbound) //checking time is in stimulation bounds in ms
 	{
 		Cells[0]->setStim(1);
 	}
@@ -93,14 +94,40 @@ bool Simulation::NeuronsUpdate()
 	//updating all neurons in simulation
 	for (auto& cell: Cells)
 	{
-		cell->Neuron::Update(TimeStep, Time*TimeStep, Iext);  //need to convert back to time in double
+		cell->Neuron::Update(H, RealTime(StepTime), Iext);  //need to convert to realtime since neuron doesn't know H value
 	}
-	
 	return true;
 }
 
 void Simulation::Network()
 {
+	int size = Cells.size()*0.1;
+	
 	for(auto& cell:Cells)
-	{	cell->AddNeighbors(Cells); }
+	{	//create for each neuron an array of neighbors randomly selected from Cells
+		Neuron** neighbors=new Neuron*[size]; //creation of array with appropriate size and memory storage
+		list<int> possible ;  //list created filled with all possible indexes for neurons in sim
+		for (int i (0); i < Cells.size() ; ++i)
+		{
+			possible.push_back(i);
+		}
+		
+		for (int i (0); i <size ; ++i)
+		{
+			//a la con copie des indexes et relation avec soi meme
+			// solution potentielle:  liste chainée des indexes et virer le sien et virer ceux déja tirés
+			
+			int index= rand() % Cells.size();
+			neighbors[i]=Cells[index];
+		}
+
+		cell->AddNeighbors(neighbors, size);
+		delete neighbors;
+	}
 }
+
+double Simulation::RealTime(double time)
+{
+	return time*H;
+}
+
