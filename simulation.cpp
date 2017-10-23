@@ -130,4 +130,3 @@ double Simulation::RealTime(double time)
 {
 	return time*H;
 }
-
