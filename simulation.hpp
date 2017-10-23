@@ -11,7 +11,7 @@ class Simulation{
 	//simulation constants
 
 //given by main
-	double TimeStep;
+	double H;
 //given by user
 	double SimTime;
 	double Iext;
@@ -20,7 +20,7 @@ class Simulation{
 	double bbound;
 
 	//simulation variables
-	int Time; // is counted as increments of the timestep
+	int StepTime; // is counted as increments of the timestep H
 	vector<Neuron*> Cells; //stores the created neurons
 	
 	
@@ -29,7 +29,7 @@ class Simulation{
 	
 	public:
 	
-	Simulation(double timestep, int time=0);
+	Simulation(double timestep);
 	~Simulation();
 	void Run();
 	void NewNeuron(string name);
@@ -37,7 +37,7 @@ class Simulation{
 	
 	bool NeuronsUpdate();
 	void Network();
-
+	double RealTime(double time);
 
 };
 
