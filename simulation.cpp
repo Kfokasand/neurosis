@@ -83,8 +83,7 @@ void Simulation::Run()
 }
 
 
-
-bool Simulation::NeuronsUpdate()
+void Simulation::NeuronsUpdate()
 {
 	//allows to stimulate only one neuron in network
 	if(RealTime(StepTime)>abound and RealTime(StepTime)< bbound) //checking time is in stimulation bounds in ms
@@ -97,7 +96,6 @@ bool Simulation::NeuronsUpdate()
 	{
 		cell->Neuron::Update(H, RealTime(StepTime), Iext);  //need to convert to realtime since neuron doesn't know H value
 	}
-	return true;
 }
 
 void Simulation::Network()

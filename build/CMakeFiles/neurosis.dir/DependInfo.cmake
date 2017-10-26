@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/main.cpp" "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/neurosis.dir/main.cpp.o"
-  "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp" "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/neurosis.dir/neuron.cpp.o"
-  "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp" "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/neurosis.dir/simulation.cpp.o"
+  "/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/main.cpp" "/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/neurosis.dir/main.cpp.o"
+  "/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.cpp" "/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/neurosis.dir/neuron.cpp.o"
+  "/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.cpp" "/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/neurosis.dir/simulation.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
