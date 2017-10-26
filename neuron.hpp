@@ -21,7 +21,7 @@ class Neuron{
 		
 	//personal variables which change with time
 		double MembPot;
-		double SpikeNumb;;
+		double SpikeNumb;
 		vector<double> SpikeHistory;
 		//implement delay in current reception
 		vector<double> Buffer;

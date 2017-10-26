@@ -35,7 +35,7 @@ class Simulation{
 	void NewNeuron(string name);
 	//chosen as a bool to ensure all neurons have been succesfully updated at each step (test may be done with a catch and throw or asset
 	
-	bool NeuronsUpdate();
+	void NeuronsUpdate();
 	void Network();
 	double RealTime(double time);
 

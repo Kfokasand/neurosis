@@ -86,6 +86,7 @@ void Simulation::Run()
 
 bool Simulation::NeuronsUpdate()
 {
+	//allows to stimulate only one neuron in network
 	if(RealTime(StepTime)>abound and RealTime(StepTime)< bbound) //checking time is in stimulation bounds in ms
 	{
 		Cells[0]->setStim(1);

@@ -1,0 +1,1 @@
+/usr/bin/c++   -W -Wall -pedantic -std=c++11   CMakeFiles/neurosis.dir/neuron.cpp.o CMakeFiles/neurosis.dir/simulation.cpp.o CMakeFiles/neurosis.dir/main.cpp.o  -o neurosis -rdynamic 

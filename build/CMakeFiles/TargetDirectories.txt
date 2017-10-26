@@ -1,0 +1,4 @@
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/googletest/CMakeFiles/gtest.dir
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/neurosis.dir
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/googletest/CMakeFiles/gtest_main.dir
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/unittest.dir
