@@ -3,15 +3,12 @@
 
 CMakeFiles/neurosis.dir/main.cpp.o
  /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/main.cpp
- /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.hpp
- /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/relation.hpp
  /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.hpp
 CMakeFiles/neurosis.dir/neuron.cpp.o
  /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.cpp
  /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.hpp
- /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/relation.hpp
 CMakeFiles/neurosis.dir/simulation.cpp.o
+ /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/network.hpp
  /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.hpp
- /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/relation.hpp
  /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.cpp
  /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.hpp

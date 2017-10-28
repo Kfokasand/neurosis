@@ -9,38 +9,28 @@ private:
 
 	//variables to be held by network 
 	const int N; //number of wanted cells in simulation
-	static const int Ne; //number of wanted exitatory cells or prop ?
-	static const int Ni; //number of wanted inhibitory cells or prop ?
-	static const int Ce; //number of excitatory connections on a cell
-	static const int Ci; //number of inhibitory connections on a cell
-	static const int Cext; //number of external connections on a cell
+	 const int Ne; //number of wanted exitatory cells or prop ?
+	 const int Ni; //number of wanted inhibitory cells or prop ?
+	 const int Ce; //number of excitatory connections on a cell
+	 const int Ci; //number of inhibitory connections on a cell
+	 const int Cext; //number of external connections on a cell
 	const double Je; //excitatory coefficient
 	const double Ji; //inhibitory coefficient
+	const double H; //timeStep given by simulation
 
+	//table of cells
+	vector<Neuron*> Cells; //stores the created neurons
 
-	//constuctor of Network receives number of wanted cells
-
-	Network(int n) :
-	N(n),
-	Ne(n*0.1),
-	Ni(n*0.0250),
-	Ce(Ne*0.1),
-	Ci(Ni*0.1),
-	Cext(Ce),
-	Je(0.1),
-	Ji(0,5)
-	{
-		CreateNeurons(N);
-		LinkNetwork();
-	}
 
 public:
 
+	//constuctor of Network receives number of wanted cells
+	Network(int n, double h);
+	~Network();
+	
 	void CreateNeurons(int n); //adds a neuron to the network
-	void LinkNetwork(); //creates lins betyseen neurons
-	void UpdateNetwork(); //calls update of all neurons in network
-	void StoreState(); //stores mb of all cells at a given step
-
+	void LinkNetwork(); //creates links between neurons
+	void UpdateNetwork(double Iext_); //calls update of all neurons in network
 };
 
 #endif

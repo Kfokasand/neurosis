@@ -38,7 +38,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis
+CMAKE_BINARY_DIR = /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis
 
 # Include any dependencies generated for this target.
 include CMakeFiles/neurosis.dir/depend.make
@@ -51,17 +51,17 @@ include CMakeFiles/neurosis.dir/flags.make
 
 CMakeFiles/neurosis.dir/neuron.cpp.o: CMakeFiles/neurosis.dir/flags.make
 CMakeFiles/neurosis.dir/neuron.cpp.o: neuron.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neurosis.dir/neuron.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neurosis.dir/neuron.cpp.o -c /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neurosis.dir/neuron.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp
 
 CMakeFiles/neurosis.dir/neuron.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neurosis.dir/neuron.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.cpp > CMakeFiles/neurosis.dir/neuron.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp > CMakeFiles/neurosis.dir/neuron.cpp.i
 
 CMakeFiles/neurosis.dir/neuron.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neurosis.dir/neuron.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.cpp -o CMakeFiles/neurosis.dir/neuron.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp -o CMakeFiles/neurosis.dir/neuron.cpp.s
 
 CMakeFiles/neurosis.dir/neuron.cpp.o.requires:
 .PHONY : CMakeFiles/neurosis.dir/neuron.cpp.o.requires
@@ -74,17 +74,17 @@ CMakeFiles/neurosis.dir/neuron.cpp.o.provides.build: CMakeFiles/neurosis.dir/neu
 
 CMakeFiles/neurosis.dir/simulation.cpp.o: CMakeFiles/neurosis.dir/flags.make
 CMakeFiles/neurosis.dir/simulation.cpp.o: simulation.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neurosis.dir/simulation.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neurosis.dir/simulation.cpp.o -c /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neurosis.dir/simulation.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp
 
 CMakeFiles/neurosis.dir/simulation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neurosis.dir/simulation.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.cpp > CMakeFiles/neurosis.dir/simulation.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp > CMakeFiles/neurosis.dir/simulation.cpp.i
 
 CMakeFiles/neurosis.dir/simulation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neurosis.dir/simulation.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.cpp -o CMakeFiles/neurosis.dir/simulation.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp -o CMakeFiles/neurosis.dir/simulation.cpp.s
 
 CMakeFiles/neurosis.dir/simulation.cpp.o.requires:
 .PHONY : CMakeFiles/neurosis.dir/simulation.cpp.o.requires
@@ -97,17 +97,17 @@ CMakeFiles/neurosis.dir/simulation.cpp.o.provides.build: CMakeFiles/neurosis.dir
 
 CMakeFiles/neurosis.dir/main.cpp.o: CMakeFiles/neurosis.dir/flags.make
 CMakeFiles/neurosis.dir/main.cpp.o: main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neurosis.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neurosis.dir/main.cpp.o -c /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/main.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neurosis.dir/main.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/main.cpp
 
 CMakeFiles/neurosis.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neurosis.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/main.cpp > CMakeFiles/neurosis.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/main.cpp > CMakeFiles/neurosis.dir/main.cpp.i
 
 CMakeFiles/neurosis.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neurosis.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/main.cpp -o CMakeFiles/neurosis.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/main.cpp -o CMakeFiles/neurosis.dir/main.cpp.s
 
 CMakeFiles/neurosis.dir/main.cpp.o.requires:
 .PHONY : CMakeFiles/neurosis.dir/main.cpp.o.requires
@@ -149,6 +149,6 @@ CMakeFiles/neurosis.dir/clean:
 .PHONY : CMakeFiles/neurosis.dir/clean
 
 CMakeFiles/neurosis.dir/depend:
-	cd /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/CMakeFiles/neurosis.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/CMakeFiles/neurosis.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/neurosis.dir/depend
 

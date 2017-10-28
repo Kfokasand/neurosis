@@ -10,7 +10,6 @@ int main()
 	sim1.Run();
 	//rerun to check for memory leaks
 	
-	
 	return 0;	
 }
 

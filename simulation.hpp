@@ -1,6 +1,5 @@
 #ifndef SIM_H
 #define SIM_H
-#include "neuron.hpp"
 
 using namespace std;
 
@@ -11,7 +10,7 @@ class Simulation{
 	//simulation constants
 
 //given by main
-	double H;
+	double H; // time step per cycle of simulation
 //given by user
 	double SimTime;
 	double Iext;
@@ -20,8 +19,7 @@ class Simulation{
 	double bbound;
 
 	//simulation variables
-	int StepTime; // is counted as increments of the timestep H
-	vector<Neuron*> Cells; //stores the created neurons
+	unsigned int StepTime; // is counted as increments of the timestep H
 	
 	
 	void SetSimTime();
@@ -30,13 +28,9 @@ class Simulation{
 	public:
 	
 	Simulation(double timestep);
-	~Simulation();
 	void Run();
-	void NewNeuron(string name);
-	//chosen as a bool to ensure all neurons have been succesfully updated at each step (test may be done with a catch and throw or asset
 	
 	void NeuronsUpdate();
-	void Network();
 	double RealTime(double time);
 
 };
