@@ -43,16 +43,31 @@ class Neuron{
 
 	public:
 
-
-	//constructor provided with default values
+	/**
+	 * Neuron constructor 
+	 *takes no arguments with default values
+	 * copy of Neurons is blocked
+	 */
 		Neuron();
 		Neuron(const Neuron& other) = delete;
 		~Neuron();
 
 	//getters 
+	/**
+	 * takes no arguments
+	 * @return current Membrane Potential
+	 */
+	  
 		double getMembPot() const;
+	/**
+	 * takes no arguments
+	 * @return number of recorded spikes
+	 */
 		double getSpikeNumb() const ;
-		//returns the time value of the last spike in history
+	/**
+	 * takes no arguments
+	 * @return time (in real time: ms) of last recorded spike
+	 */
 		double getLastSpike() const;
 
 	//setters
@@ -60,11 +75,16 @@ class Neuron{
 		void setStim(bool stim);
 
 	//cell dev methods
-		//stores time value when called into SpikeHistory, using cellTime converted into RealTime with H=TimeStep
+	/**
+	 * stores cellTime converted into RealTime (ms) into SpikeHistory
+	 * @param double H: simulation time step
+	 */
 		void storeSpikeTime(double H);
-	
-		//changes value of membrane potential according to time laps, external current or spikes
-		//returns true if the cell Fires
+	/**
+	 *changes value of membrane potential according to time laps, external current or spikes
+	 * @param double H: simulation time step
+	 * @return true if cells fires during current step
+	 */
 		bool UpdateNeuron(double H, double Iext);
 		//resets membrane potential to rest value
 		void Reset();
