@@ -21,16 +21,25 @@ private:
 	//table of cells
 	vector<Neuron*> Cells; //stores the created neurons
 	vector<vector<int>> Connections; //stores connections in network
+	
+		
+	void CreateNeurons(int n); //adds a neuron to the network
+	void LinkNetwork(); //creates links between neurons
+	
+	/**
+	 * stores the membrane potential of all Neurons contained in Network in a vector
+	 * @return returns vector of potentials (double)
+	 */
+	vector<double> StoreState();
 
 
 public:
 
 	//constuctor of Network receives number of wanted cells
 	Network(int n, double h);
+	Network(Network& other)=delete;
 	~Network();
-	
-	void CreateNeurons(int n); //adds a neuron to the network
-	void LinkNetwork(); //creates links between neurons
+
 	void UpdateNetwork(double Iext_); //calls update of all neurons in network
 };
 

@@ -1,5 +1,4 @@
 #include "simulation.hpp"
-#include "network.hpp"
 #include <array>
 #include <list>
 
@@ -7,6 +6,10 @@ Simulation::Simulation(double timestep)
 			:H(timestep),StepTime(0)
 			{ 	cout<< "You are intialising a simulation" << endl <<"Please enter settings" <<endl;
 				SetSimTime();
+				int n;
+				cout << "Enter number of desired neurons in network : " ;
+				cin >> n;
+				network = new Network(n,H);
 				SetCurrent();	
 			}
 			
@@ -42,10 +45,7 @@ void Simulation::SetCurrent()
 
 void Simulation::Run()
 {
-	int n;
-	cout << "Enter number of desired neurons in network : " ;
-	cin >> n;
-	Network network (n,H);
+
 	//opening channel to store membrane potentials
 	ofstream history;
 	history.open("history.txt");	
@@ -53,28 +53,24 @@ void Simulation::Run()
 	//updating cell
 	do{
 		network.Network::UpdateNetwork(Iext);
+		StoreState();
 		//incremeting simulation Time in steps
 		StepTime+=1;
 	}
-	while(RealTime(StepTime)< SimTime); //checking if simulation has reached it's end in ms
-	
-	
-}
-
-
-void Simulation::NeuronsUpdate()
-{
-	//allows to stimulate only one neuron in network
-	if(RealTime(StepTime)>abound and RealTime(StepTime)< bbound) //checking time is in stimulation bounds in ms
-	{
-	}
-	
-
-
+	while(RealTime(StepTime)< SimTime); //checking if simulation has reached it's end in ms	
 }
 
 
 double Simulation::RealTime(double time)
 {
 	return time*H;
+}
+
+void Simulation::StoreState()
+{
+	vector<double> state (network.Network::StoreState());
+	for(unsigned int i(0); i< state.size(); ++i)
+	{
+		history << //:TODO joli tableau +temps +history as attribute + gerer Network as attribute (intialisation dyn ?)
+	}
 }

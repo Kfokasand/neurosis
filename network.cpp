@@ -68,3 +68,13 @@ void Network::UpdateNetwork(double Iext_)
 		}
 	}
 }
+vector<double> Network::StoreState()
+{
+	vector<double> state;
+	for(auto cell:Cells)
+	{
+		state.push_back(cell->getMembPot());
+	}
+	
+	return state;
+}

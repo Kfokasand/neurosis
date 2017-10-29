@@ -1,5 +1,6 @@
 #ifndef SIM_H
 #define SIM_H
+#include "network.hpp"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ class Simulation{
 
 	//simulation variables
 	unsigned int StepTime; // is counted as increments of the timestep H
+	Network network;
 	
 	
 	void SetSimTime();
@@ -29,9 +31,9 @@ class Simulation{
 	
 	Simulation(double timestep);
 	void Run();
-	
-	void NeuronsUpdate();
 	double RealTime(double time);
+	void StoreState();
+	
 
 };
 

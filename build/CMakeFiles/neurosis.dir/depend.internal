@@ -3,6 +3,8 @@
 
 CMakeFiles/neurosis.dir/main.cpp.o
  /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/main.cpp
+ /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.hpp
+ /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.hpp
  /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.hpp
 CMakeFiles/neurosis.dir/network.cpp.o
  /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp
