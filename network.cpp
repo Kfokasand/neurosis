@@ -1,5 +1,4 @@
 #include "network.hpp"
-#include "neuron.hpp"
 
 Network::Network(int n, double h)
 	:N(n),
@@ -9,7 +8,7 @@ Network::Network(int n, double h)
 	Ci(Ni*0.1),
 	Cext(Ce),
 	Je(0.1),
-	Ji(0,5),
+	Ji(0.5),
 	H(h)
 	{
 		CreateNeurons(N);
@@ -25,18 +24,21 @@ Network::~Network()
 	}
 }
 
-void Neuron::CreateNeurons(int n)
+void Network::CreateNeurons(int n)
 {
-	for(int i(1); i<=n, ++i)
-		{Cells.push_back(new Neuron())};
+	for(int i(1); i<=n; ++i)
+		{	
+			if (i<=Ne ) {Cells.push_back(new Neuron(1));} //makes Ne excitatory neurons
+			else {Cells.push_back(new Neuron(0));} //the rest N-Ne are inhibitory
+		};
 }
 
-void LinkNetwork()
+void Network::LinkNetwork()
 {
 
 }
 
-void UpdateNetwork(double Iext_)
+void Network::UpdateNetwork(double Iext_)
 {
 		//updating all neurons in simulation
 	for (auto& cell: Cells)

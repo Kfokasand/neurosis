@@ -24,17 +24,17 @@ class Neuron{
 		//internal cell clock counted as increments of H
 		unsigned int CellTime;
 		
-	//personal variables which may change with time
+
 		double Cap; //capacity
 		double Res; //resistance
 		double Tau; //I'm not sure
-		bool Stim;
+		bool Stim; //Idicates if neuron recieves programmed external current
 		
-	//personal variables which stay constant once intialised
 		const double TauRef; // refractory period
 		const double Vres; //membrane potential after spike
 		const double SpikeThreshold; //potential to trigger neuron spike
-		const unsigned int Delay;
+		const unsigned int Delay; //delay in steps for current to arrive
+		const bool Excitatory;
 		
 	//private methods
 		
@@ -45,12 +45,11 @@ class Neuron{
 
 	/**
 	 * Neuron constructor 
-	 *takes no arguments with default values
+	 *@param bool indicating neuron type true = excitatory false=inhibitory
 	 * copy of Neurons is blocked
 	 */
-		Neuron();
+		Neuron(bool ex);
 		Neuron(const Neuron& other) = delete;
-		~Neuron();
 
 	//getters 
 	/**

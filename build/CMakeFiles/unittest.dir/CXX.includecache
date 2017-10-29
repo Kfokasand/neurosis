@@ -6,15 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.cpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp
+network.hpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.hpp
+
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.hpp
 neuron.hpp
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.hpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.hpp
+
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp
+neuron.hpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.hpp
 cmath
 -
-assert.h
--
 
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.hpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.hpp
 iostream
 -
 vector
@@ -25,14 +31,12 @@ string
 -
 fstream
 -
-relation.hpp
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/relation.hpp
 
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/relation.hpp
-
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.cpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp
 simulation.hpp
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.hpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.hpp
+network.hpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.hpp
 cstdlib
 -
 array
@@ -40,7 +44,5 @@ array
 list
 -
 
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/simulation.hpp
-neuron.hpp
-/home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/neuron.hpp
+/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.hpp
 

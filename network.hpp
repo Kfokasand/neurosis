@@ -20,6 +20,7 @@ private:
 
 	//table of cells
 	vector<Neuron*> Cells; //stores the created neurons
+	vector<vector<int>> Connections; //stores connections in network
 
 
 public:

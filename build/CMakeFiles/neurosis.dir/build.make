@@ -118,11 +118,35 @@ CMakeFiles/neurosis.dir/main.cpp.o.provides: CMakeFiles/neurosis.dir/main.cpp.o.
 
 CMakeFiles/neurosis.dir/main.cpp.o.provides.build: CMakeFiles/neurosis.dir/main.cpp.o
 
+CMakeFiles/neurosis.dir/network.cpp.o: CMakeFiles/neurosis.dir/flags.make
+CMakeFiles/neurosis.dir/network.cpp.o: ../network.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/neurosis.dir/network.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/neurosis.dir/network.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp
+
+CMakeFiles/neurosis.dir/network.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neurosis.dir/network.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp > CMakeFiles/neurosis.dir/network.cpp.i
+
+CMakeFiles/neurosis.dir/network.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neurosis.dir/network.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp -o CMakeFiles/neurosis.dir/network.cpp.s
+
+CMakeFiles/neurosis.dir/network.cpp.o.requires:
+.PHONY : CMakeFiles/neurosis.dir/network.cpp.o.requires
+
+CMakeFiles/neurosis.dir/network.cpp.o.provides: CMakeFiles/neurosis.dir/network.cpp.o.requires
+	$(MAKE) -f CMakeFiles/neurosis.dir/build.make CMakeFiles/neurosis.dir/network.cpp.o.provides.build
+.PHONY : CMakeFiles/neurosis.dir/network.cpp.o.provides
+
+CMakeFiles/neurosis.dir/network.cpp.o.provides.build: CMakeFiles/neurosis.dir/network.cpp.o
+
 # Object files for target neurosis
 neurosis_OBJECTS = \
 "CMakeFiles/neurosis.dir/neuron.cpp.o" \
 "CMakeFiles/neurosis.dir/simulation.cpp.o" \
-"CMakeFiles/neurosis.dir/main.cpp.o"
+"CMakeFiles/neurosis.dir/main.cpp.o" \
+"CMakeFiles/neurosis.dir/network.cpp.o"
 
 # External object files for target neurosis
 neurosis_EXTERNAL_OBJECTS =
@@ -130,6 +154,7 @@ neurosis_EXTERNAL_OBJECTS =
 neurosis: CMakeFiles/neurosis.dir/neuron.cpp.o
 neurosis: CMakeFiles/neurosis.dir/simulation.cpp.o
 neurosis: CMakeFiles/neurosis.dir/main.cpp.o
+neurosis: CMakeFiles/neurosis.dir/network.cpp.o
 neurosis: CMakeFiles/neurosis.dir/build.make
 neurosis: CMakeFiles/neurosis.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable neurosis"
@@ -142,6 +167,7 @@ CMakeFiles/neurosis.dir/build: neurosis
 CMakeFiles/neurosis.dir/requires: CMakeFiles/neurosis.dir/neuron.cpp.o.requires
 CMakeFiles/neurosis.dir/requires: CMakeFiles/neurosis.dir/simulation.cpp.o.requires
 CMakeFiles/neurosis.dir/requires: CMakeFiles/neurosis.dir/main.cpp.o.requires
+CMakeFiles/neurosis.dir/requires: CMakeFiles/neurosis.dir/network.cpp.o.requires
 .PHONY : CMakeFiles/neurosis.dir/requires
 
 CMakeFiles/neurosis.dir/clean:

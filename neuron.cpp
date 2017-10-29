@@ -1,8 +1,7 @@
 #include "neuron.hpp"                                                                                                                                                                                                                                                                                                    #include "neuron.hpp"
 #include <cmath>
 
-Neuron::Neuron()
-//double iMembPot=10, double iSpikeNumb=0, double t=20, double tref=2, double reset=10, double spiket=20
+Neuron::Neuron(bool ex)
 	: MembPot(0),
 	SpikeNumb(0),
 	CellTime(0), 
@@ -13,8 +12,8 @@ Neuron::Neuron()
 	TauRef(2), 
 	Vres(0), 
 	SpikeThreshold(20),
-	Delay(1.5/0.1) //time of delay /time step of simulation
-
+	Delay(1.5/0.1), //time of delay /time step of simulation
+	Excitatory(ex)
 {
 	cout << "a neuron is born" << endl;
 	cout << "initial membrane potential is : " << MembPot << endl;

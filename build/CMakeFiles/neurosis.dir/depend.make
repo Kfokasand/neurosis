@@ -4,6 +4,10 @@
 CMakeFiles/neurosis.dir/main.cpp.o: ../main.cpp
 CMakeFiles/neurosis.dir/main.cpp.o: ../simulation.hpp
 
+CMakeFiles/neurosis.dir/network.cpp.o: ../network.cpp
+CMakeFiles/neurosis.dir/network.cpp.o: ../network.hpp
+CMakeFiles/neurosis.dir/network.cpp.o: ../neuron.hpp
+
 CMakeFiles/neurosis.dir/neuron.cpp.o: ../neuron.cpp
 CMakeFiles/neurosis.dir/neuron.cpp.o: ../neuron.hpp
 

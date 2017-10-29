@@ -95,16 +95,41 @@ CMakeFiles/unittest.dir/simulation.cpp.o.provides: CMakeFiles/unittest.dir/simul
 
 CMakeFiles/unittest.dir/simulation.cpp.o.provides.build: CMakeFiles/unittest.dir/simulation.cpp.o
 
+CMakeFiles/unittest.dir/network.cpp.o: CMakeFiles/unittest.dir/flags.make
+CMakeFiles/unittest.dir/network.cpp.o: ../network.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/unittest.dir/network.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/unittest.dir/network.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp
+
+CMakeFiles/unittest.dir/network.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/unittest.dir/network.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp > CMakeFiles/unittest.dir/network.cpp.i
+
+CMakeFiles/unittest.dir/network.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/unittest.dir/network.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp -o CMakeFiles/unittest.dir/network.cpp.s
+
+CMakeFiles/unittest.dir/network.cpp.o.requires:
+.PHONY : CMakeFiles/unittest.dir/network.cpp.o.requires
+
+CMakeFiles/unittest.dir/network.cpp.o.provides: CMakeFiles/unittest.dir/network.cpp.o.requires
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/network.cpp.o.provides.build
+.PHONY : CMakeFiles/unittest.dir/network.cpp.o.provides
+
+CMakeFiles/unittest.dir/network.cpp.o.provides.build: CMakeFiles/unittest.dir/network.cpp.o
+
 # Object files for target unittest
 unittest_OBJECTS = \
 "CMakeFiles/unittest.dir/neuron.cpp.o" \
-"CMakeFiles/unittest.dir/simulation.cpp.o"
+"CMakeFiles/unittest.dir/simulation.cpp.o" \
+"CMakeFiles/unittest.dir/network.cpp.o"
 
 # External object files for target unittest
 unittest_EXTERNAL_OBJECTS =
 
 unittest: CMakeFiles/unittest.dir/neuron.cpp.o
 unittest: CMakeFiles/unittest.dir/simulation.cpp.o
+unittest: CMakeFiles/unittest.dir/network.cpp.o
 unittest: CMakeFiles/unittest.dir/build.make
 unittest: googletest/libgtest.a
 unittest: googletest/libgtest_main.a
@@ -119,6 +144,7 @@ CMakeFiles/unittest.dir/build: unittest
 
 CMakeFiles/unittest.dir/requires: CMakeFiles/unittest.dir/neuron.cpp.o.requires
 CMakeFiles/unittest.dir/requires: CMakeFiles/unittest.dir/simulation.cpp.o.requires
+CMakeFiles/unittest.dir/requires: CMakeFiles/unittest.dir/network.cpp.o.requires
 .PHONY : CMakeFiles/unittest.dir/requires
 
 CMakeFiles/unittest.dir/clean:
