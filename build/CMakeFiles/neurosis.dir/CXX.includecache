@@ -13,6 +13,8 @@ simulation.hpp
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp
 network.hpp
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.hpp
+cstdlib
+-
 
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.hpp
 neuron.hpp
@@ -41,8 +43,6 @@ simulation.hpp
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.hpp
 network.hpp
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.hpp
-cstdlib
--
 array
 -
 list

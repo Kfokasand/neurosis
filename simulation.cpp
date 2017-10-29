@@ -1,6 +1,5 @@
 #include "simulation.hpp"
 #include "network.hpp"
-#include <cstdlib>
 #include <array>
 #include <list>
 
