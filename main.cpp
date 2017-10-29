@@ -1,5 +1,4 @@
 #include "simulation.hpp"
-#include <iostream>
 
 using namespace std;
 

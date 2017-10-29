@@ -1,6 +1,6 @@
 #ifndef NETWORK_H
 #define NETWORK_H
-
+#include "neuron.hpp"
 using namespace std; 
 
 class Network {

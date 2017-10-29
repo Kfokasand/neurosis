@@ -1,4 +1,4 @@
-# Install script for directory: /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/googletest
+# Install script for directory: /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/googletest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
