@@ -1,6 +1,8 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 #include "neuron.hpp"
+#include <fstream>
+
 using namespace std; 
 
 class Network {
@@ -22,7 +24,7 @@ private:
 	vector<Neuron*> Cells; ///< table with references to all neurons
 	vector<vector<int>> Connections; ///< stores connections in network as ints
 	
-	ofstream history; ///< chanel data storage document
+	ofstream history; ///< channel to data storage document
 	
 		
 	/**

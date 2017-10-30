@@ -14,10 +14,13 @@ Network::Network(int n)
 	{
 		
 		Connections = vector<vector<int>> (N); /**creating N vectors of ints (1 for each neuron in simulation) */
+		CreateNeurons();
 		LinkNetwork();
 		
 		//opening channel to store membrane potentials
 		history.open("history.txt");
+		history << "test1";
+
 	}
 
 Network::~Network()
@@ -37,6 +40,7 @@ void Network::CreateNeurons()
 			if (i<=Ne ) {Cells.push_back(new Neuron(1));} //makes Ne excitatory neurons
 			else {Cells.push_back(new Neuron(0));} //the rest N-Ne are inhibitory
 		};
+	cout << N << " neurons were created " << endl;
 }
 
 void Network::LinkNetwork()
@@ -60,6 +64,7 @@ void Network::LinkNetwork()
 			Connections[j].push_back(i);
 		}
 	}
+	cout << "Network was built" << endl;
 }
 
 void Network::UpdateNetwork(double Iext_, unsigned int time)
@@ -99,5 +104,6 @@ vector<double> Network::StoreState() const
 
 void Network::StoreSpike(Neuron* n, unsigned int i) const
 {
-	//history << 3 << "\t" << i << "\n"; 
+	//history << "test2";
+	//history << n->getLastSpike() << "\t" << i << "\n"; 
 }

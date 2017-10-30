@@ -69,7 +69,7 @@ bool Neuron::UpdateNeuron(double TimeStep, double Iext, unsigned int i)
 			}
 
 			//resetting used buffer value
-			assert(Index(CellTime<Buffer.size()));
+			assert(Index(CellTime)<Buffer.size());
 			Buffer[Index(CellTime)];
 			//incrementing cell's clock
 			CellTime+=1;
