@@ -12,8 +12,8 @@ Network::Network(int n)
 	Ji(-0.5),
 	H(0.1)
 	{
-		Connections = vector<vector<int>> (N, vector<int> (N,0)); //matrix of size N*N filled with 0 values
-		CreateNeurons();
+		
+		Connections = vector<vector<int>> (N); /**creating N vectors of ints (1 for each neuron in simulation) */
 		LinkNetwork();
 		
 		//opening channel to store membrane potentials
@@ -49,12 +49,14 @@ void Network::LinkNetwork()
 		for(int c(0); c<Ce; ++c)
 		{
 			j=rand()%Ne; //random int in [0, Ne-1]
+			assert(j<Connections.size());
 			Connections[j].push_back(i); //means ith neuron is affected by jth neuron
 		}
 	//has to recieve Ci connections from neurons in the Last Ni	
 		for(int c(0); c<Ci; ++c)
 		{
 			j=rand()%Ni +Ne; //random int in [Ne, Ne+Ni-1]
+			assert(j<Connections.size());
 			Connections[j].push_back(i);
 		}
 	}
@@ -68,8 +70,9 @@ void Network::UpdateNetwork(double Iext_, unsigned int time)
 		if(Cells[i]->Neuron::UpdateNeuron(H, Iext_))
 		{
 			StoreSpike(Cells[i],i);
-			for(auto& daughter_index : Connections[i])
+			for(auto daughter_index : Connections[i])
 			{
+				assert(daughter_index<Cells.size());
 				if(Cells[i]->isEx())
 				{
 					Cells[daughter_index]->Receive(Je, time);
@@ -96,5 +99,5 @@ vector<double> Network::StoreState() const
 
 void Network::StoreSpike(Neuron* n, unsigned int i) const
 {
-	history << n->getLastSpike() << "\t" << i << "\n"; 
+	//history << 3 << "\t" << i << "\n"; 
 }

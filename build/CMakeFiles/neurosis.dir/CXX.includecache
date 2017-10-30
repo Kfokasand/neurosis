@@ -37,6 +37,8 @@ fstream
 -
 random
 -
+cassert
+-
 
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp
 simulation.hpp
