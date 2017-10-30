@@ -5,6 +5,7 @@
 #include <cmath>
 #include <string>
 #include <fstream>
+#include <random>
 
 using namespace std;
 
@@ -12,43 +13,43 @@ using namespace std;
 class Neuron{
 	
 	private:
-//should the resistance capaciy and other variable be static, here all cells share the same but they could be different
 
+		double MembPot; ///< Neuron's membrane potential
+		double SpikeNumb; ///< Number of recorded spikes
+		vector<double> SpikeHistory; ///< time values of recorded spikes
+		vector<double> Buffer; ///< buffer of size delay+1
+		unsigned int CellTime; ///< internal cell clock counted as increments of H
 		
-	//personal variables which change with time
-		double MembPot;
-		double SpikeNumb;
-		vector<double> SpikeHistory;
-		//implement delay in current reception
-		vector<double> Buffer;
-		//internal cell clock counted as increments of H
-		unsigned int CellTime;
+		double Cap; ///<capacity
+		double Res; ///<resistance
+		double Tau; ///<I'm not sure
+		bool Stim; ///<Indicates if neuron recieves programmed external current
 		
-
-		double Cap; //capacity
-		double Res; //resistance
-		double Tau; //I'm not sure
-		bool Stim; //Idicates if neuron recieves programmed external current
-		
-		const double TauRef; // refractory period
-		const double Vres; //membrane potential after spike
-		const double SpikeThreshold; //potential to trigger neuron spike
-		const unsigned int Delay; //delay in steps for current to arrive
-		const bool Excitatory;
+		const double TauRef; ///< refractory period
+		const double Vres; ///< membrane potential after spike
+		const double SpikeThreshold; ///< potential to trigger neuron spike
+		const unsigned int Delay; ///< delay in steps for current to arrive
+		const bool Excitatory; ///< indicates nature of neuron (excitatory or inhibitory)
 		
 	//private methods
 		
-		//convert time into a buffer Index
+	/**
+	 * convert time value into a buffer index
+	 * @param int time value
+	 * @return int buffer index
+	 */
 		unsigned int Index(unsigned int time);
 
 	public:
 
 	/**
 	 * Neuron constructor 
-	 *@param bool indicating neuron type true = excitatory false=inhibitory
-	 * copy of Neurons is blocked
+	 *@param bool indicating neuron type true: excitatory false: inhibitory
 	 */
 		Neuron(bool ex);
+	/**
+	 * Neuron copy is blocked
+	 */
 		Neuron(const Neuron& other) = delete;
 
 	//getters 
@@ -63,6 +64,7 @@ class Neuron{
 	 * @return number of recorded spikes
 	 */
 		double getSpikeNumb() const ;
+		
 	/**
 	 * takes no arguments
 	 * @return time (in real time: ms) of last recorded spike
@@ -79,18 +81,41 @@ class Neuron{
 	 * @param double H: simulation time step
 	 */
 		void storeSpikeTime(double H);
+		
 	/**
 	 *changes value of membrane potential according to time laps, external current or spikes
 	 * @param double H: simulation time step
+	 * @param double external current if there is one
+	 * @param int to indicate number of iterations
 	 * @return true if cells fires during current step
 	 */
-		bool UpdateNeuron(double H, double Iext);
-		//resets membrane potential to rest value
+		bool UpdateNeuron(double H, double Iext, unsigned int i=1);
+		
+	/**
+	 * resets membrane potential to rest value
+	 * no arguments or return value
+	 */
 		void Reset();
-		//the neuron Fires an action potentian and then resets
+		
+	/**
+	 * adds a spike to SpikeHistory and calls the Neuron's reset method
+	 * @param double: the time step to convert time value to RealTime (ms)
+	 */
 		void Fire(double H);
-		//Receive voltage from another neuron
-		void Receive(double charge, unsigned int time); //use general time since both cells wright in time_%D Index of vector 
+		
+	/**
+	 * takes in voltage and stores it in Neuron's buffer index [(time+D)%(D+1)] according to general time
+	 * @param double: voltage
+	 * @param int for simulation's time
+	 */
+		void Receive(double charge, unsigned int time);
+		
+		/**
+	 * tindicates if the neuron is excitatory
+	 * @return bool true if the neuron is excitatorz, false if inhibitory
+	 */
+	 
+	 bool isEx() const;
 
 
 };

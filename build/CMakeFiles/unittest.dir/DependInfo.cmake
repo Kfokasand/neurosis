@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp" "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/unittest.dir/network.cpp.o"
   "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp" "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/unittest.dir/neuron.cpp.o"
   "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp" "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/unittest.dir/simulation.cpp.o"
+  "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/unittest.cpp" "/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/unittest.dir/unittest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

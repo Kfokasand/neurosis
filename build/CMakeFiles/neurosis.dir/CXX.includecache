@@ -23,8 +23,6 @@ neuron.hpp
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp
 neuron.hpp
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.hpp
-cmath
--
 
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.hpp
 iostream
@@ -36,6 +34,8 @@ cmath
 string
 -
 fstream
+-
+random
 -
 
 /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp

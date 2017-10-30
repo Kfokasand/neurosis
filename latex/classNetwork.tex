@@ -1,0 +1,122 @@
+\hypertarget{classNetwork}{\section{Network Class Reference}
+\label{classNetwork}\index{Network@{Network}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classNetwork_a621f08b0925e54e4ab6d2917f35f7e4d}{Network} (int n, double h)
+\item 
+\hyperlink{classNetwork_a4be23543c1a08bfcf0ad7954fcb48b97}{Network} (\hyperlink{classNetwork}{Network} \&other)=delete
+\item 
+void \hyperlink{classNetwork_a1a1f35028ca0e8d1f7a3b619f06b6251}{Update\-Network} (double Iext\-\_\-)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classNetwork_a95602eab7b45f5884a861e7b98222043}{Create\-Neurons} ()
+\item 
+void \hyperlink{classNetwork_a04ecdcfaba2309d24e56f787b94a05db}{Link\-Network} ()
+\item 
+vector$<$ double $>$ \hyperlink{classNetwork_adeab5e8558503586c3d703ed045346de}{Store\-State} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNetwork_af8658694471fdd0bf6c419f3e8585821}{const int \hyperlink{classNetwork_af8658694471fdd0bf6c419f3e8585821}{N}}\label{classNetwork_af8658694471fdd0bf6c419f3e8585821}
+
+\begin{DoxyCompactList}\small\item\em number of wanted cells in simulation \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_a4eabd7361fd4fff9aa07559e98631865}{const int \hyperlink{classNetwork_a4eabd7361fd4fff9aa07559e98631865}{Ne}}\label{classNetwork_a4eabd7361fd4fff9aa07559e98631865}
+
+\begin{DoxyCompactList}\small\item\em number of wanted exitatory cells or prop ? \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_ada762bd29fdf868f0adc30fb9f35ea3c}{const int \hyperlink{classNetwork_ada762bd29fdf868f0adc30fb9f35ea3c}{Ni}}\label{classNetwork_ada762bd29fdf868f0adc30fb9f35ea3c}
+
+\begin{DoxyCompactList}\small\item\em number of wanted inhibitory cells or prop ? \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_ae5503ee63a63b1eab930d2b53c8535a7}{const int \hyperlink{classNetwork_ae5503ee63a63b1eab930d2b53c8535a7}{Ce}}\label{classNetwork_ae5503ee63a63b1eab930d2b53c8535a7}
+
+\begin{DoxyCompactList}\small\item\em number of excitatory connections on a cell \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_abb350a782c8c5ae027cda70b6a3a6421}{const int \hyperlink{classNetwork_abb350a782c8c5ae027cda70b6a3a6421}{Ci}}\label{classNetwork_abb350a782c8c5ae027cda70b6a3a6421}
+
+\begin{DoxyCompactList}\small\item\em number of inhibitory connections on a cell \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_a4f238ad2a3c89df9eb7eedae5c306707}{const int \hyperlink{classNetwork_a4f238ad2a3c89df9eb7eedae5c306707}{Cext}}\label{classNetwork_a4f238ad2a3c89df9eb7eedae5c306707}
+
+\begin{DoxyCompactList}\small\item\em number of external connections on a cell \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_afe751f0c7727cf5cf1a4eb59cca4f333}{const double \hyperlink{classNetwork_afe751f0c7727cf5cf1a4eb59cca4f333}{Je}}\label{classNetwork_afe751f0c7727cf5cf1a4eb59cca4f333}
+
+\begin{DoxyCompactList}\small\item\em excitatory coefficient \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_a2ff8e1c63c99d9d5d23bc091c501cdae}{const double \hyperlink{classNetwork_a2ff8e1c63c99d9d5d23bc091c501cdae}{Ji}}\label{classNetwork_a2ff8e1c63c99d9d5d23bc091c501cdae}
+
+\begin{DoxyCompactList}\small\item\em inhibitory coefficient \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_ae17f3b80498aa6b28f508b9e8ba8cef3}{const double \hyperlink{classNetwork_ae17f3b80498aa6b28f508b9e8ba8cef3}{H}}\label{classNetwork_ae17f3b80498aa6b28f508b9e8ba8cef3}
+
+\begin{DoxyCompactList}\small\item\em time\-Step given by simulation \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_a757f1e80b7ff1f43b9ffd2395df673ce}{vector$<$ \hyperlink{classNeuron}{Neuron} $\ast$ $>$ \hyperlink{classNetwork_a757f1e80b7ff1f43b9ffd2395df673ce}{Cells}}\label{classNetwork_a757f1e80b7ff1f43b9ffd2395df673ce}
+
+\begin{DoxyCompactList}\small\item\em table with references to all neurons \end{DoxyCompactList}\item 
+\hypertarget{classNetwork_a60511ad25cea8d6e122382f1cf686f24}{vector$<$ vector$<$ int $>$ $>$ \hyperlink{classNetwork_a60511ad25cea8d6e122382f1cf686f24}{Connections}}\label{classNetwork_a60511ad25cea8d6e122382f1cf686f24}
+
+\begin{DoxyCompactList}\small\item\em stores connections in network as ints \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classNetwork_a621f08b0925e54e4ab6d2917f35f7e4d}{\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\subsubsection[{Network}]{\setlength{\rightskip}{0pt plus 5cm}Network\-::\-Network (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{double}]{h}
+\end{DoxyParamCaption}
+)}}\label{classNetwork_a621f08b0925e54e4ab6d2917f35f7e4d}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em int} & number of desires Neurons \\
+\hline
+{\em double} & h simulation time step \\
+\hline
+\end{DoxyParams}
+\hypertarget{classNetwork_a4be23543c1a08bfcf0ad7954fcb48b97}{\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\subsubsection[{Network}]{\setlength{\rightskip}{0pt plus 5cm}Network\-::\-Network (
+\begin{DoxyParamCaption}
+\item[{{\bf Network} \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [delete]}}}\label{classNetwork_a4be23543c1a08bfcf0ad7954fcb48b97}
+\hyperlink{classNetwork}{Network} copy has been blocked 
+
+\subsection{Member Function Documentation}
+\hypertarget{classNetwork_a95602eab7b45f5884a861e7b98222043}{\index{Network@{Network}!Create\-Neurons@{Create\-Neurons}}
+\index{Create\-Neurons@{Create\-Neurons}!Network@{Network}}
+\subsubsection[{Create\-Neurons}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::\-Create\-Neurons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetwork_a95602eab7b45f5884a861e7b98222043}
+Creates N Neurons, stores their ref in Cells \hypertarget{classNetwork_a04ecdcfaba2309d24e56f787b94a05db}{\index{Network@{Network}!Link\-Network@{Link\-Network}}
+\index{Link\-Network@{Link\-Network}!Network@{Network}}
+\subsubsection[{Link\-Network}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::\-Link\-Network (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetwork_a04ecdcfaba2309d24e56f787b94a05db}
+Creates nks between Neurons and stores them in Connections \hypertarget{classNetwork_adeab5e8558503586c3d703ed045346de}{\index{Network@{Network}!Store\-State@{Store\-State}}
+\index{Store\-State@{Store\-State}!Network@{Network}}
+\subsubsection[{Store\-State}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $>$ Network\-::\-Store\-State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{classNetwork_adeab5e8558503586c3d703ed045346de}
+stores the membrane potential of all Neurons contained in \hyperlink{classNetwork}{Network} in a vector \begin{DoxyReturn}{Returns}
+returns vector of potentials (double) 
+\end{DoxyReturn}
+\hypertarget{classNetwork_a1a1f35028ca0e8d1f7a3b619f06b6251}{\index{Network@{Network}!Update\-Network@{Update\-Network}}
+\index{Update\-Network@{Update\-Network}!Network@{Network}}
+\subsubsection[{Update\-Network}]{\setlength{\rightskip}{0pt plus 5cm}void Network\-::\-Update\-Network (
+\begin{DoxyParamCaption}
+\item[{double}]{Iext\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classNetwork_a1a1f35028ca0e8d1f7a3b619f06b6251}
+Calls update method of all Neurons and handles potential transmission 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+network.\-hpp\item 
+network.\-cpp\end{DoxyCompactItemize}

@@ -268,6 +268,30 @@ simulation.cpp.s:
 	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/simulation.cpp.s
 .PHONY : simulation.cpp.s
 
+unittest.o: unittest.cpp.o
+.PHONY : unittest.o
+
+# target to build an object file
+unittest.cpp.o:
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/unittest.cpp.o
+.PHONY : unittest.cpp.o
+
+unittest.i: unittest.cpp.i
+.PHONY : unittest.i
+
+# target to preprocess a source file
+unittest.cpp.i:
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/unittest.cpp.i
+.PHONY : unittest.cpp.i
+
+unittest.s: unittest.cpp.s
+.PHONY : unittest.s
+
+# target to generate assembly for a file
+unittest.cpp.s:
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/unittest.cpp.s
+.PHONY : unittest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -293,6 +317,9 @@ help:
 	@echo "... simulation.o"
 	@echo "... simulation.i"
 	@echo "... simulation.s"
+	@echo "... unittest.o"
+	@echo "... unittest.i"
+	@echo "... unittest.s"
 .PHONY : help
 
 

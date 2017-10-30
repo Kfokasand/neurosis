@@ -2,32 +2,26 @@
 #include <array>
 #include <list>
 
-Simulation::Simulation(double timestep)
-			:H(timestep),StepTime(0)
+Simulation::Simulation()
+			:H(0.1),
+			StepTime(0)
 			{ 	cout<< "You are intialising a simulation" << endl <<"Please enter settings" <<endl;
 				SetSimTime();
 				int n;
 				cout << "Enter number of desired neurons in network : " ;
 				cin >> n;
-				network = new Network(n,H);
-				SetCurrent();	
+				network = new Network(n);
+				SetCurrent();		
 			}
 			
 void Simulation::SetSimTime()
 {
 
-	//check the imput
 	do {
 		cout << endl << "Set simulation time in ms : ";
 		cin>> SimTime;	
 	} while(SimTime<0);
-	
-	/*if (!cin) // same as cin.fail() checking value type
-	{
-		cin.clear();
-		cin.ignore(1000);
-		cout << "Invalid value type, please enter value again : " ;
-	}*/
+
 }
 
 
@@ -45,14 +39,10 @@ void Simulation::SetCurrent()
 
 void Simulation::Run()
 {
-
-	//opening channel to store membrane potentials
-	ofstream history;
-	history.open("history.txt");	
 	
 	//updating cell
 	do{
-		network.Network::UpdateNetwork(Iext);
+		network->Network::UpdateNetwork(Iext,StepTime);
 		StoreState();
 		//incremeting simulation Time in steps
 		StepTime+=1;
@@ -68,9 +58,9 @@ double Simulation::RealTime(double time)
 
 void Simulation::StoreState()
 {
-	vector<double> state (network.Network::StoreState());
+	vector<double> state (network->Network::StoreState());
 	for(unsigned int i(0); i< state.size(); ++i)
 	{
-		history << //:TODO joli tableau +temps +history as attribute + gerer Network as attribute (intialisation dyn ?)
+		//:TODO joli tableau +temps +history as attribute + gerer Network as attribute (intialisation dyn ?)
 	}
 }

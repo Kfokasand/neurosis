@@ -49,9 +49,32 @@ include CMakeFiles/unittest.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/unittest.dir/flags.make
 
+CMakeFiles/unittest.dir/unittest.cpp.o: CMakeFiles/unittest.dir/flags.make
+CMakeFiles/unittest.dir/unittest.cpp.o: ../unittest.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/unittest.dir/unittest.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/unittest.dir/unittest.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/unittest.cpp
+
+CMakeFiles/unittest.dir/unittest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/unittest.dir/unittest.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/unittest.cpp > CMakeFiles/unittest.dir/unittest.cpp.i
+
+CMakeFiles/unittest.dir/unittest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/unittest.dir/unittest.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/unittest.cpp -o CMakeFiles/unittest.dir/unittest.cpp.s
+
+CMakeFiles/unittest.dir/unittest.cpp.o.requires:
+.PHONY : CMakeFiles/unittest.dir/unittest.cpp.o.requires
+
+CMakeFiles/unittest.dir/unittest.cpp.o.provides: CMakeFiles/unittest.dir/unittest.cpp.o.requires
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/unittest.cpp.o.provides.build
+.PHONY : CMakeFiles/unittest.dir/unittest.cpp.o.provides
+
+CMakeFiles/unittest.dir/unittest.cpp.o.provides.build: CMakeFiles/unittest.dir/unittest.cpp.o
+
 CMakeFiles/unittest.dir/neuron.cpp.o: CMakeFiles/unittest.dir/flags.make
 CMakeFiles/unittest.dir/neuron.cpp.o: ../neuron.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/unittest.dir/neuron.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/unittest.dir/neuron.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/neuron.cpp
 
@@ -74,7 +97,7 @@ CMakeFiles/unittest.dir/neuron.cpp.o.provides.build: CMakeFiles/unittest.dir/neu
 
 CMakeFiles/unittest.dir/simulation.cpp.o: CMakeFiles/unittest.dir/flags.make
 CMakeFiles/unittest.dir/simulation.cpp.o: ../simulation.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/unittest.dir/simulation.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/unittest.dir/simulation.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/simulation.cpp
 
@@ -97,7 +120,7 @@ CMakeFiles/unittest.dir/simulation.cpp.o.provides.build: CMakeFiles/unittest.dir
 
 CMakeFiles/unittest.dir/network.cpp.o: CMakeFiles/unittest.dir/flags.make
 CMakeFiles/unittest.dir/network.cpp.o: ../network.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/unittest.dir/network.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/unittest.dir/network.cpp.o -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/network.cpp
 
@@ -120,6 +143,7 @@ CMakeFiles/unittest.dir/network.cpp.o.provides.build: CMakeFiles/unittest.dir/ne
 
 # Object files for target unittest
 unittest_OBJECTS = \
+"CMakeFiles/unittest.dir/unittest.cpp.o" \
 "CMakeFiles/unittest.dir/neuron.cpp.o" \
 "CMakeFiles/unittest.dir/simulation.cpp.o" \
 "CMakeFiles/unittest.dir/network.cpp.o"
@@ -127,6 +151,7 @@ unittest_OBJECTS = \
 # External object files for target unittest
 unittest_EXTERNAL_OBJECTS =
 
+unittest: CMakeFiles/unittest.dir/unittest.cpp.o
 unittest: CMakeFiles/unittest.dir/neuron.cpp.o
 unittest: CMakeFiles/unittest.dir/simulation.cpp.o
 unittest: CMakeFiles/unittest.dir/network.cpp.o
@@ -142,6 +167,7 @@ unittest: CMakeFiles/unittest.dir/link.txt
 CMakeFiles/unittest.dir/build: unittest
 .PHONY : CMakeFiles/unittest.dir/build
 
+CMakeFiles/unittest.dir/requires: CMakeFiles/unittest.dir/unittest.cpp.o.requires
 CMakeFiles/unittest.dir/requires: CMakeFiles/unittest.dir/neuron.cpp.o.requires
 CMakeFiles/unittest.dir/requires: CMakeFiles/unittest.dir/simulation.cpp.o.requires
 CMakeFiles/unittest.dir/requires: CMakeFiles/unittest.dir/network.cpp.o.requires
