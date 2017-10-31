@@ -23,8 +23,8 @@ private:
 
 	vector<Neuron*> Cells; ///< table with references to all neurons
 	vector<vector<int>> Connections; ///< stores connections in network as ints
-	vector<double> SpikeTimes;
-	vector<double> indexes;
+	vector<double> SpikeTimes; ///< vector storing time value of spiking neuron
+	vector<double> indexes; ///vector storing index of spiking neuron
 	
 	ofstream history;
 	ofstream out; ///< channel to data storage document
@@ -68,10 +68,14 @@ public:
 	vector<double> StoreState() const;
 	
 	/**
-	 *stores spike time in a document associated with Neuron Id
+	 *stores spike time in a document associated with Neuron Id can be done at any time
 	 */
 	 
 	 void StoreSpike(const Neuron* n, unsigned int i) const;
+	
+	/**
+	*writes paires values of SpikeTimes and indexes in a document at the end of simulation
+	*/
 	 void writeSpikes() const;
 };
 
