@@ -68,7 +68,7 @@ bool Neuron::UpdateNeuron(double TimeStep, double Iext, unsigned int i)
 				Reset();
 			}
 
-			//resetting used buffer value
+			//resetting used buffer value (or non used if refractory)
 			assert(Index(CellTime)<Buffer.size());
 			Buffer[Index(CellTime)];
 			//incrementing cell's clock

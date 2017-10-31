@@ -23,8 +23,11 @@ private:
 
 	vector<Neuron*> Cells; ///< table with references to all neurons
 	vector<vector<int>> Connections; ///< stores connections in network as ints
+	vector<double> SpikeTimes;
+	vector<double> indexes;
 	
-	ofstream history; ///< channel to data storage document
+	ofstream history;
+	ofstream out; ///< channel to data storage document
 	
 		
 	/**
@@ -68,7 +71,8 @@ public:
 	 *stores spike time in a document associated with Neuron Id
 	 */
 	 
-	 void StoreSpike(Neuron* n, unsigned int i) const;
+	 void StoreSpike(const Neuron* n, unsigned int i) const;
+	 void writeSpikes() const;
 };
 
 #endif

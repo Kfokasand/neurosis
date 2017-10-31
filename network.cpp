@@ -14,12 +14,14 @@ Network::Network(int n)
 	{
 		
 		Connections = vector<vector<int>> (N); /**creating N vectors of ints (1 for each neuron in simulation) */
+	//	SpikeStorage = vector<vector<double>> (2);
 		CreateNeurons();
 		LinkNetwork();
 		
 		//opening channel to store membrane potentials
-		history.open("history.txt");
-		history << "test1";
+		out.open("history.txt");
+		history.open("please.txt");
+		out<< "test1";
 
 	}
 
@@ -27,7 +29,8 @@ Network::~Network()
 {
 	for(auto& cell: Cells)
 	{
-		history.close();
+		writeSpikes();
+		out.close();
 		delete cell;
 		cell=nullptr;
 	}
@@ -35,6 +38,7 @@ Network::~Network()
 
 void Network::CreateNeurons()
 {
+	out << "test3";
 	for(int i(1); i<=N; ++i)
 		{	
 			if (i<=Ne ) {Cells.push_back(new Neuron(1));} //makes Ne excitatory neurons
@@ -45,6 +49,7 @@ void Network::CreateNeurons()
 
 void Network::LinkNetwork()
 {
+	out << "test4";
 	int j;
 	//for every daughter (receiver) neuron in the simulation
 	for(unsigned int i(0); i<Connections[0].size(); ++i)
@@ -69,11 +74,14 @@ void Network::LinkNetwork()
 
 void Network::UpdateNetwork(double Iext_, unsigned int time)
 {
+	int counterSpikes (0);
+	
 	//updating all neurons in simulation
 	for (unsigned int i(0); i<Cells.size(); ++i)
 	{
 		if(Cells[i]->Neuron::UpdateNeuron(H, Iext_))
 		{
+			counterSpikes+=1;
 			StoreSpike(Cells[i],i);
 			for(auto daughter_index : Connections[i])
 			{
@@ -89,6 +97,7 @@ void Network::UpdateNetwork(double Iext_, unsigned int time)
 			}
 		}
 	}
+	cout << "number of spikes at " << time << " : " << counterSpikes << endl;
 }
 
 vector<double> Network::StoreState() const
@@ -102,8 +111,24 @@ vector<double> Network::StoreState() const
 	return state;	
 }
 
-void Network::StoreSpike(Neuron* n, unsigned int i) const
+void Network::StoreSpike(const Neuron* n, unsigned int i) const
 {
+	double j(n->getLastSpike());
+	double g(i);
+	SpikeTimes.push_back(j);
+	indexes.push_back(g);
+	//cout << "neuron " << i << " has spiked at " << n->getLastSpike() <<endl;;
 	//history << "test2";
-	//history << n->getLastSpike() << "\t" << i << "\n"; 
+	//out << n->getLastSpike() << "\t" << i << "\n"; 
+}
+
+void Network::writeSpikes() const
+{
+	ofstream ble;
+	ble.open("ble.txt");
+	
+	for (unsigned int j(0); j<SpikeTimes.size();++j)
+	{	
+			ble << SpikeTimes[j] << '\t' << SpikeTimes[j] << '\n' ;
+	}
 }
