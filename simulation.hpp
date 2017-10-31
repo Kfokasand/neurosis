@@ -29,9 +29,26 @@ class Simulation{
 	
 	public:
 	
+	/*
+	* a constructor, takes no arguments
+	*/
 	Simulation();
+	
+	/*
+	*runs the simulation by calling Network's update methodand increments the simulation time with each step
+	*/
 	void Run();
+	
+	/*
+	*takes time value in steps and converts it to ms
+	* @param double (int) time in steps
+	* @return double time in ms
+	*/
 	double RealTime(double time);
+	
+	/*
+	* writes membrane potential of all cells into a file at a given time
+	*/
 	void StoreState();
 	
 
