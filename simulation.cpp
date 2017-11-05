@@ -60,15 +60,32 @@ void Simulation::SetCurrent(double a, double b, double I)
 
 void Simulation::Run()
 {
-	
+	double progress(0);
+	double barwidth(70);
 	//updating cell
 	do{
 		network->Network::UpdateNetwork(Iext,StepTime);
 		//incremeting simulation Time in steps
 		StepTime+=1;
+		
+		int pos(progress*barwidth/SimTime*H);
+		cout << "[";
+		for (int c(0); c< barwidth; c++)
+		{
+			if (c<=pos)
+			{
+				cout << "#";
+			}
+				else { cout << "-" ;}
+		}
+			progress+=1.0;
+			cout << "]";
+			
+			cout << progress/SimTime*H *100 << "%\r" ;
+			cout.flush();
 	}
 	while(RealTime(StepTime)< SimTime); //checking if simulation has reached it's end in ms	
-	cout << "Simulation finished" << endl;
+	cout << endl << "Simulation finished" << endl;
 }
 
 

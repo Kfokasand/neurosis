@@ -59,7 +59,7 @@ void Network::CreateNeurons()
 			if (i<=Ne ) {Cells.push_back(new Neuron(1));} //makes Ne excitatory neurons
 			else {Cells.push_back(new Neuron(0));} //the rest N-Ne are inhibitory
 		};
-	cout << N << " neurons were created " << endl;
+	cout <<endl << N << " neurons were created " << endl;
 }
 
 void Network::LinkNetwork()
@@ -127,7 +127,7 @@ void Network::UpdateNetwork(double Iext_, unsigned int time)
 			}
 		}
 	}
-	cout << "number of spikes at " << time << " : " << counterSpikes << endl;
+	//cout << "number of spikes at " << time << " : " << counterSpikes << endl;
 }
 
 vector<double> Network::StoreState() const
