@@ -47,10 +47,41 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis
+CMAKE_SOURCE_DIR = /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build
+CMAKE_BINARY_DIR = /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build
+
+#=============================================================================
+# Target rules for target CMakeFiles/doc.dir
+
+# All Build rule for target.
+CMakeFiles/doc.dir/all:
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/depend
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 
+	@echo "Built target doc"
+.PHONY : CMakeFiles/doc.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/doc.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/doc.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
+.PHONY : CMakeFiles/doc.dir/rule
+
+# Convenience name for target.
+doc: CMakeFiles/doc.dir/rule
+.PHONY : doc
+
+# clean rule for target.
+CMakeFiles/doc.dir/clean:
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/clean
+.PHONY : CMakeFiles/doc.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/doc.dir/clean
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/neurosis.dir
@@ -59,7 +90,7 @@ CMAKE_BINARY_DIR = /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neuro
 CMakeFiles/neurosis.dir/all:
 	$(MAKE) -f CMakeFiles/neurosis.dir/build.make CMakeFiles/neurosis.dir/depend
 	$(MAKE) -f CMakeFiles/neurosis.dir/build.make CMakeFiles/neurosis.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  3 4 5
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  3 4 5 6
 	@echo "Built target neurosis"
 .PHONY : CMakeFiles/neurosis.dir/all
 
@@ -69,9 +100,9 @@ all: CMakeFiles/neurosis.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/neurosis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/neurosis.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
 .PHONY : CMakeFiles/neurosis.dir/rule
 
 # Convenience name for target.
@@ -91,11 +122,11 @@ clean: CMakeFiles/neurosis.dir/clean
 # Target rules for target CMakeFiles/unittest.dir
 
 # All Build rule for target.
-CMakeFiles/unittest.dir/all: googletest/CMakeFiles/gtest_main.dir/all
 CMakeFiles/unittest.dir/all: googletest/CMakeFiles/gtest.dir/all
+CMakeFiles/unittest.dir/all: googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/depend
 	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  6 7
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  7 8 9 10
 	@echo "Built target unittest"
 .PHONY : CMakeFiles/unittest.dir/all
 
@@ -105,9 +136,9 @@ all: CMakeFiles/unittest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/unittest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/unittest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
 .PHONY : CMakeFiles/unittest.dir/rule
 
 # Convenience name for target.
@@ -147,7 +178,7 @@ googletest/preinstall:
 googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f googletest/CMakeFiles/gtest.dir/build.make googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f googletest/CMakeFiles/gtest.dir/build.make googletest/CMakeFiles/gtest.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  1
 	@echo "Built target gtest"
 .PHONY : googletest/CMakeFiles/gtest.dir/all
 
@@ -157,9 +188,9 @@ all: googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
 googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 googletest/CMakeFiles/gtest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
 .PHONY : googletest/CMakeFiles/gtest.dir/rule
 
 # Convenience name for target.
@@ -182,7 +213,7 @@ clean: googletest/CMakeFiles/gtest.dir/clean
 googletest/CMakeFiles/gtest_main.dir/all: googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f googletest/CMakeFiles/gtest_main.dir/build.make googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f googletest/CMakeFiles/gtest_main.dir/build.make googletest/CMakeFiles/gtest_main.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  2
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles  2
 	@echo "Built target gtest_main"
 .PHONY : googletest/CMakeFiles/gtest_main.dir/all
 
@@ -192,9 +223,9 @@ all: googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
 googletest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 googletest/CMakeFiles/gtest_main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
 .PHONY : googletest/CMakeFiles/gtest_main.dir/rule
 
 # Convenience name for target.

@@ -601,3 +601,18 @@ Linking C executable cmTryCompileExec1891538867
 make[1]: Leaving directory `/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/CMakeTmp'
 
 
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3052549900/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3052549900.dir/build.make CMakeFiles/cmTryCompileExec3052549900.dir/build
+make[1]: Entering directory `/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/CMakeTmp'
+/usr/local/bin/cmake -E cmake_progress_report /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3052549900.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3052549900.dir/CheckIncludeFiles.c.o   -c /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec3052549900
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3052549900.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec3052549900.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec3052549900 -rdynamic 
+make[1]: Leaving directory `/home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/CMakeTmp'
+
+

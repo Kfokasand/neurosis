@@ -42,10 +42,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis
+CMAKE_SOURCE_DIR = /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build
+CMAKE_BINARY_DIR = /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -82,9 +82,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/Desktop/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/INTRANET/fokasand/myfiles/cpp/BA3/project/neurosis/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -110,6 +110,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named doc
+
+# Build rule for target.
+doc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 doc
+.PHONY : doc
+
+# fast build rule for target.
+doc/fast:
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/build
+.PHONY : doc/fast
 
 #=============================================================================
 # Target rules for targets named neurosis
@@ -187,6 +200,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/neurosis.dir/build.make CMakeFiles/neurosis.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+network.o: network.cpp.o
+.PHONY : network.o
+
+# target to build an object file
+network.cpp.o:
+	$(MAKE) -f CMakeFiles/neurosis.dir/build.make CMakeFiles/neurosis.dir/network.cpp.o
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/network.cpp.o
+.PHONY : network.cpp.o
+
+network.i: network.cpp.i
+.PHONY : network.i
+
+# target to preprocess a source file
+network.cpp.i:
+	$(MAKE) -f CMakeFiles/neurosis.dir/build.make CMakeFiles/neurosis.dir/network.cpp.i
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/network.cpp.i
+.PHONY : network.cpp.i
+
+network.s: network.cpp.s
+.PHONY : network.s
+
+# target to generate assembly for a file
+network.cpp.s:
+	$(MAKE) -f CMakeFiles/neurosis.dir/build.make CMakeFiles/neurosis.dir/network.cpp.s
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/network.cpp.s
+.PHONY : network.cpp.s
+
 neuron.o: neuron.cpp.o
 .PHONY : neuron.o
 
@@ -241,6 +281,30 @@ simulation.cpp.s:
 	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/simulation.cpp.s
 .PHONY : simulation.cpp.s
 
+unittest.o: unittest.cpp.o
+.PHONY : unittest.o
+
+# target to build an object file
+unittest.cpp.o:
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/unittest.cpp.o
+.PHONY : unittest.cpp.o
+
+unittest.i: unittest.cpp.i
+.PHONY : unittest.i
+
+# target to preprocess a source file
+unittest.cpp.i:
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/unittest.cpp.i
+.PHONY : unittest.cpp.i
+
+unittest.s: unittest.cpp.s
+.PHONY : unittest.s
+
+# target to generate assembly for a file
+unittest.cpp.s:
+	$(MAKE) -f CMakeFiles/unittest.dir/build.make CMakeFiles/unittest.dir/unittest.cpp.s
+.PHONY : unittest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -249,6 +313,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... doc"
 	@echo "... neurosis"
 	@echo "... unittest"
 	@echo "... test"
@@ -257,12 +322,18 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... network.o"
+	@echo "... network.i"
+	@echo "... network.s"
 	@echo "... neuron.o"
 	@echo "... neuron.i"
 	@echo "... neuron.s"
 	@echo "... simulation.o"
 	@echo "... simulation.i"
 	@echo "... simulation.s"
+	@echo "... unittest.o"
+	@echo "... unittest.i"
+	@echo "... unittest.s"
 .PHONY : help
 
 

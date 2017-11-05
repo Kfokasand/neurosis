@@ -1,43 +1,80 @@
-#ifndef SIM_H
-#define SIM_H
-#include "neuron.hpp"
+#ifndef SIMULATION_H
+#define SIMULATION_H
+#include "network.hpp"
 
 using namespace std;
 
 class Simulation{
 
 	private :
-	
-	//simulation constants
 
+	bool custom; ///< bool indicating if default of custom simulation
 //given by main
-	double H;
+	double H; ///< amount of time in ms per simulation step
 //given by user
-	double SimTime;
-	double Iext;
-	//time boundaries for external current application
+	double SimTime; ///< total simulation time in ms
+	double Iext; ///< external current
+	
+	///time boundaries for external current application
 	double abound;
 	double bbound;
+	
 
-	//simulation variables
-	int StepTime; // is counted as increments of the timestep H
-	vector<Neuron*> Cells; //stores the created neurons
+	unsigned int StepTime; ///< is counted as increments of the timestep H
+	Network* network; ///< Network containing all neurons
 	
 	
-	void SetSimTime();
-	void SetCurrent();
+	/**
+	* allows to set an external current
+	* @param double start time of stimulation
+	* @param double end time of stimulation
+	* @param double value of stimualtion (mV)
+	*/
+	void SetCurrent(double a, double b, double I);
 	
 	public:
 	
-	Simulation(double timestep);
-	~Simulation();
-	void Run();
-	void NewNeuron(string name);
-	//chosen as a bool to ensure all neurons have been succesfully updated at each step (test may be done with a catch and throw or asset
+	/**
+	* @brief default constructor
+	* Uses default simulation and Network values
+	*/
+	Simulation();
 	
-	void NeuronsUpdate();
-	void Network();
-	double RealTime(double time);
+	/**
+	* @brief custom Simulation constructor
+	* @param simulation time
+	*/
+	Simulation( double sim_time);
+	
+	/**
+	*@brief destructor
+	*/
+	~Simulation();
+	
+	/**
+	*runs the simulation by calling Network's update method
+	*increments the simulation time with each step
+	*/
+	void Run();
+	
+	/**
+	*takes time value in steps and converts it to ms
+	* @param double (int) time in steps
+	* @return double time in ms
+	*/
+	double RealTime(double time) const;
+	
+	/**
+	* allows to set simulation time in ms
+	*/
+	void SetSimTime();
+	
+	/**
+	* writes membrane potential of all cells into a file at a given time
+	*/
+	void StoreState();
+	
+
 
 };
 
