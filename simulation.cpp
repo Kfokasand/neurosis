@@ -94,12 +94,4 @@ double Simulation::RealTime(int time) const
 	return time*H;
 }
 
-void Simulation::StoreState()
-{
-	vector<double> state (network->Network::StoreState());
-	for(unsigned int i(0); i< state.size(); ++i)
-	{
-		//:TODO joli tableau +temps +history as attribute + gerer Network as attribute (intialisation dyn ?)
-	}
-}
 
