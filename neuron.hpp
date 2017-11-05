@@ -22,7 +22,7 @@ class Neuron{
 		
 		double Cap; ///<capacity
 		double Res; ///<resistance
-		double Tau; ///<I'm not sure
+		double Tau; ///<Membrane spike threshold
 		
 		bool Stim; ///<Indicates if neuron recieves programmed external current
 		
