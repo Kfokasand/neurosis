@@ -19,7 +19,7 @@ Time of one Step: 0.1 ms
 
 The user can choose the recording boundaries in ms.
 
-######
+------------
 
 Custom: The user can select the parameters
 
@@ -35,14 +35,14 @@ Recording boudaries
 The rest of the parameters are the same as for Automatic Simulation
 
 
-######
+------------
 General:
 Simulations steps are alway 0.1 ms long
 
 NB: programmed external stimulation (Iext) is switched off by default, methods using it have only been kept for testing purposes
 
 
-######
+------------
 Neuron parameters are :
 (these cannot be changed by user)
 

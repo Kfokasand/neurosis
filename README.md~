@@ -6,7 +6,7 @@ This programm allows to simulate the neural activity of a network made of 12500 
 Simulations can be ran Custom (selecting parameters) or Automatic
 
 
-######
+------------
 Automatic: Simulation runs with 
 
 12 000 neurons
