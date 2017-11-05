@@ -89,7 +89,7 @@ void Simulation::Run()
 }
 
 
-double Simulation::RealTime(double time) const
+double Simulation::RealTime(int time) const
 {
 	return time*H;
 }
