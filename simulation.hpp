@@ -62,7 +62,7 @@ class Simulation{
 	* @param double (int) time in steps
 	* @return double time in ms
 	*/
-	double RealTime(double time) const;
+	double RealTime (int time) const;
 	
 	/**
 	* allows to set simulation time in ms
